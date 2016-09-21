@@ -1,4 +1,4 @@
-const crypto = require('crypto');
+const crypto = require('crypto')
 const path = require('path')
 const hParams = {
   'salt': '2fd75123-1b6c-49a4-89e2-0d8932e20e2a',

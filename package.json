@@ -48,10 +48,9 @@
     "type": "git",
     "url": "git@github.com:LevelOneProject/dfsp-identity.git"
   },
-  "engines": {
-    "node": ">=4.4.7",
-    "npm": ">=3.10.6"
+  "publishConfig": {
+    "registry": "https://modusbox.jfrog.io/modusbox/api/npm/level1-npm-release"
   },
-  "author": "Stamen Peev <stamen.peev@softwaregroup-bg.com>",
+  "author": "Kalin Krustev <kalin.krustev@softwaregroup-bg.com>",
   "license": "UNLICENSED"
 }
