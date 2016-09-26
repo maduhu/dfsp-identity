@@ -12,15 +12,28 @@ module.exports = {
     path: path.join(__dirname, 'schema'),
     linkSP: true
   }],
-  'check.request.send': function (msg) {
-    return new Promise((resolve, reject) => {
-      crypto.pbkdf2(msg.password, hParams.salt, hParams.iterations, hParams.keylen, hParams.digest, (err, key) => {
-        if (err) {
-          throw err
+  // todo document identity.check and identity.get methods
+  check: function (msg, $meta) {
+    if (msg && msg.actionId === 'identity.get') { // expose identity.get without authentication
+      return {
+        'permission.get': ['*']
+      }
+    } else {
+      return new Promise((resolve, reject) => {
+        if (msg.password == null) {
+          resolve(msg)
+        } else {
+          crypto.pbkdf2(msg.password, hParams.salt, hParams.iterations, hParams.keylen, hParams.digest, (err, key) => {
+            if (err) {
+              throw err
+            }
+            msg.password = key.toString('hex')
+            resolve(msg)
+          })
         }
-        msg.password = key.toString('hex')
-        resolve(msg)
+      }).then((msg) => {
+        return this.super['identity.check'](msg, $meta)
       })
-    })
+    }
   }
 }

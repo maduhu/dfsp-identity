@@ -12,5 +12,15 @@ module.exports = {
       person: joi.any(),
       language: joi.any()
     })
+  },
+  get: {
+    description: 'Get hash params and actorId',
+    params: joi.object({
+      username: joi.string().required(),
+      type: joi.string()
+    }),
+    result: joi.object({
+      'hashParams': joi.any()
+    })
   }
 }

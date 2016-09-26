@@ -8,6 +8,19 @@ test({
   clientConfig: require('../client/test'),
   steps: function (test, bus, run) {
     run(test, bus, [{
+      name: 'Check identity',
+      method: 'identity.get',
+      params: {
+        username: '0122523365225',
+        type: 'ussd'
+      },
+      result: (result, assert) => {
+        assert.equals(joi.validate(result, {
+          actorId: joi.string(),
+          hashParams: joi.any()
+        }).error, null, 'return identity')
+      }
+    }, {
       name: 'Check pin',
       method: 'identity.check',
       params: {
@@ -22,7 +35,7 @@ test({
           'permission.get': joi.any(),
           person: joi.any(),
           language: joi.any()
-        }).error, null, 'return user name, account and currency')
+        }).error, null, 'check password and return identity and permissions')
       }
     }])
   }
