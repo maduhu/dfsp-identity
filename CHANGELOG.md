@@ -1,3 +1,13 @@
+<a name="0.2.0"></a>
+# [0.2.0](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/compare/v0.1.2...v0.2.0) (2016-09-29)
+
+
+### Features
+
+* implement identity.add ([57b5051](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/commit/57b5051))
+
+
+
 <a name="0.1.2"></a>
 ## [0.1.2](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/compare/v0.1.1...v0.1.2) (2016-09-28)
 
