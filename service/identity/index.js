@@ -14,7 +14,7 @@ module.exports = {
   }],
   // todo document identity.check and identity.get methods
   check: function (msg, $meta) {
-    if (msg && msg.actionId === 'identity.get') { // expose identity.get without authentication
+    if (msg && (msg.actionId === 'identity.get' || msg.actionId === 'identity.add')) { // expose identity get and add without authentication
       return {
         'permission.get': ['*']
       }
@@ -35,5 +35,27 @@ module.exports = {
         return this.super['identity.check'](msg, $meta)
       })
     }
+  },
+  add: function (msg, $meta) {
+    return new Promise((resolve, reject) => {
+      if (msg.hash == null || msg.hash.password == null) {
+        msg.hash.params = ''
+        msg.hash.algorithm = ''
+        msg.hash.value = ''
+        resolve(msg)
+      } else {
+        crypto.pbkdf2(msg.hash.password, hParams.salt, hParams.iterations, hParams.keylen, hParams.digest, (err, key) => {
+          if (err) {
+            throw err
+          }
+          msg.hash.params = JSON.stringify(hParams)
+          msg.hash.algorithm = 'pbkdf2'
+          msg.hash.value = key.toString('hex')
+          resolve(msg)
+        })
+      }
+    }).then((msg) => {
+      return this.super['identity.add'](msg, $meta)
+    })
   }
 }
