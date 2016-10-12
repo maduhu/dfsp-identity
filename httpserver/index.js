@@ -15,8 +15,5 @@ module.exports = {
         auth: false
       }
     }
-  },
-  start: function () {
-
   }
 }

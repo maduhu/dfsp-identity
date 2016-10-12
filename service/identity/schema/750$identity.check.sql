@@ -33,7 +33,7 @@ $body$
     RETURN QUERY WITH
       q1 AS (SELECT "@actorId" AS "actorId")
     SELECT
-      (SELECT json_agg(q1) FROM q1) AS "identity.check",
+      (SELECT row_to_json(q1) FROM q1) AS "identity.check",
       '["*"]'::json AS "permission.get",
       '{}'::json AS person,
       '{"iso2Code":"en"}'::json AS language,

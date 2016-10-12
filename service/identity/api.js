@@ -6,7 +6,8 @@ module.exports = {
     description: 'Check password',
     params: joi.object({
       username: joi.string().required(),
-      password: joi.string().required()
+      password: joi.string().required(),
+      actionId: joi.string().optional()
     }),
     result: joi.object({
       'identity.check': joi.any(),
