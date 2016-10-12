@@ -1,3 +1,20 @@
+<a name="0.3.0"></a>
+# [0.3.0](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/compare/v0.2.0...v0.3.0) (2016-10-12)
+
+
+### Bug Fixes
+
+* add .npmrc ([7d7b7e0](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/commit/7d7b7e0))
+* fix circle ci build ([9307a34](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/commit/9307a34))
+* fix login route config ([e90121a](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/commit/e90121a))
+
+
+### Features
+
+* automate build ([68acb53](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/commit/68acb53))
+
+
+
 <a name="0.2.0"></a>
 # [0.2.0](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/compare/v0.1.2...v0.2.0) (2016-09-29)
 
