@@ -1,6 +1,8 @@
 var joi = require('joi')
 module.exports = {
   check: {
+    auth: false,
+    route: '/login',
     description: 'Check password',
     params: joi.object({
       username: joi.string().required(),
