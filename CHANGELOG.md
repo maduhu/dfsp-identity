@@ -1,3 +1,15 @@
+<a name="0.3.1"></a>
+## [0.3.1](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/compare/v0.3.0...v0.3.1) (2016-10-13)
+
+
+### Bug Fixes
+
+* cleanup and joi validation fix related to basicAuth requests ([e472362](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/commit/e472362))
+* fix expected result in identity.check ([939fe5e](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/commit/939fe5e))
+* upgrade dependencies ([ad506e0](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/commit/ad506e0))
+
+
+
 <a name="0.3.0"></a>
 # [0.3.0](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/compare/v0.2.0...v0.3.0) (2016-10-12)
 
