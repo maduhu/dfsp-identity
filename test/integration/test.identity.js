@@ -29,9 +29,7 @@ test({
       },
       result: (result, assert) => {
         assert.equals(joi.validate(result, {
-          'identity.check': joi.array().length(1).items(
-            joi.object({actorId: joi.string().required()})
-          ),
+          'identity.check': joi.object({actorId: joi.string().required()}),
           'permission.get': joi.any(),
           person: joi.any(),
           language: joi.any()
