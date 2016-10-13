@@ -1,3 +1,13 @@
+<a name="0.4.0"></a>
+# [0.4.0](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/compare/v0.3.1...v0.4.0) (2016-10-13)
+
+
+### Features
+
+* changes related to requiring peer implementations from tests ([0e2ef32](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/commit/0e2ef32))
+
+
+
 <a name="0.3.1"></a>
 ## [0.3.1](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/compare/v0.3.0...v0.3.1) (2016-10-13)
 
