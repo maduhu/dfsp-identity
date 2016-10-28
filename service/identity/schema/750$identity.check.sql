@@ -31,7 +31,11 @@ $body$
         RAISE EXCEPTION 'identity.multipleResults';
     END;
     RETURN QUERY WITH
-      q1 AS (SELECT "@actorId" AS "actorId")
+      q1 AS (
+        SELECT
+          "@actorId" AS "actorId",
+          '123456789' AS "sessionId"
+      )
     SELECT
       (SELECT row_to_json(q1) FROM q1) AS "identity.check",
       '["*"]'::json AS "permission.get",

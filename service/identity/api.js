@@ -7,7 +7,8 @@ module.exports = {
     params: joi.object({
       username: joi.string().required(),
       password: joi.string().required(),
-      actionId: joi.string().optional()
+      timezone: joi.string(),
+      actionId: joi.string()
     }),
     result: joi.object({
       'identity.check': joi.any(),
