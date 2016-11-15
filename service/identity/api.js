@@ -18,6 +18,7 @@ module.exports = {
     })
   },
   get: {
+    auth: false,
     description: 'Get hash params and actorId',
     params: joi.object({
       username: joi.string().required(),
