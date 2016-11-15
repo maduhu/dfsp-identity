@@ -27,5 +27,11 @@ module.exports = {
     result: joi.object({
       'hashParams': joi.any()
     })
+  },
+  add: {
+    auth: false,
+    description: '',
+    params: joi.any(),
+    result: joi.any()
   }
 }
