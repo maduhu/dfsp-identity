@@ -1,3 +1,18 @@
+<a name="0.4.2"></a>
+## [0.4.2](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/compare/v0.4.1...v0.4.2) (2016-11-21)
+
+
+### Bug Fixes
+
+* add validation for identity.add ([0d0c160](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/commit/0d0c160))
+* fix tests ([fdcaa6b](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/commit/fdcaa6b))
+* issue [#283](https://github.com/LevelOneProject/dfsp-identity/issues/283) - DFSP License files are incorrect ([4db2d04](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/commit/4db2d04))
+* remove authentication for internal identity.get method ([56d4c82](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/commit/56d4c82))
+* small changes to identity check ([f065f90](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/commit/f065f90))
+* update dependencies ([301af3c](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/commit/301af3c))
+
+
+
 <a name="0.4.1"></a>
 ## [0.4.1](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/compare/v0.4.0...v0.4.1) (2016-10-14)
 
