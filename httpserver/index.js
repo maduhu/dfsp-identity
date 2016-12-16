@@ -12,6 +12,7 @@ module.exports = {
       method: '*',
       path: '/rpc/{method?}',
       config: {
+        tags: ['rpc'],
         auth: false
       }
     }
