@@ -1,3 +1,4 @@
+require('./error')
 const crypto = require('crypto')
 const path = require('path')
 const hParams = {
@@ -14,7 +15,12 @@ module.exports = {
   }],
   // todo document identity.check and identity.get methods
   check: function (msg, $meta) {
-    if (msg && (msg.actionId === 'identity.get' || msg.actionId === 'identity.add')) { // expose identity get and add without authentication
+    if (msg && (
+        msg.actionId === 'identity.get' ||
+        msg.actionId === 'identity.add' |
+        msg.actionId === 'identity.closeSession'
+      )
+    ) { // expose identity get and add without authentication
       return {
         'permission.get': ['*']
       }
@@ -57,5 +63,11 @@ module.exports = {
     }).then((msg) => {
       return this.super['identity.add'](msg, $meta)
     })
+  },
+  closeSession: function (msg, $meta) {
+    return this.super['identity.closeSession'](msg, $meta)
+      .then((res) => {
+        return res.data
+      })
   }
 }

@@ -1,20 +1,32 @@
 var joi = require('joi')
+
 module.exports = {
   check: {
     auth: false,
     route: '/login',
     description: 'Check password',
     params: joi.object({
-      username: joi.string().required(),
-      password: joi.string().required(),
+      username: joi.string(),
+      password: joi.string(),
+      sessionId: joi.string(),
       timezone: joi.string(),
+      actorId: joi.string(),
+      channel: joi.string(),
+      iat: joi.number(),
       actionId: joi.string()
-    }),
+    })
+      .or('username', 'actionId', 'sessionId')
+      .with('password', 'username')
+      .with('sessionId', 'timezone', 'actorId', 'channel', 'iat'),
     result: joi.object({
-      'identity.check': joi.any(),
-      'permission.get': joi.any(),
-      person: joi.any(),
-      language: joi.any()
+      'identity.check': joi.object(),
+      'permission.get': joi.array(),
+      person: joi.object(),
+      language: joi.object(),
+      localisation: joi.object(),
+      roles: joi.array(),
+      emails: joi.array(),
+      screenHeader: joi.string().allow('')
     })
   },
   get: {
@@ -29,6 +41,12 @@ module.exports = {
     })
   },
   add: {
+    auth: false,
+    description: '',
+    params: joi.any(),
+    result: joi.any()
+  },
+  closeSession: {
     auth: false,
     description: '',
     params: joi.any(),

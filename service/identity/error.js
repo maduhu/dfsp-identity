@@ -1,8 +1,10 @@
 var create = require('ut-error').define
-var Identity = create('identity')
+var Policy = create('policy')
+var Param = create('param', Policy)
+var Password = create('password', Param)
 
 module.exports = {
-  identity: function (cause) {
-    return new Identity(cause)
+  passwordRequired: function () {
+    return new Password('please provide your password')
   }
 }
