@@ -29,13 +29,17 @@ test({
       },
       result: (result, assert) => {
         assert.equals(joi.validate(result, {
-          'identity.check': joi.object({
-            actorId: joi.string().required(),
-            sessionId: joi.string().required()
+          'identity.check': joi.object().keys({
+            actorId: joi.string(),
+            sessionId: joi.string()
           }),
-          'permission.get': joi.any(),
-          person: joi.any(),
-          language: joi.any()
+          'permission.get': joi.array(),
+          person: joi.object(),
+          language: joi.object(),
+          localisation: joi.object(),
+          roles: joi.array(),
+          emails: joi.array(),
+          screenHeader: joi.string().allow('')
         }).error, null, 'check password and return identity and permissions')
       }
     }])

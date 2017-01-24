@@ -109,4 +109,3 @@ $body$
   END
 $body$
 LANGUAGE PLPGSQL
-
