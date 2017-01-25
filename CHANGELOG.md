@@ -1,3 +1,15 @@
+<a name="0.4.5"></a>
+## [0.4.5](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/compare/v0.4.4...v0.4.5) (2017-01-25)
+
+
+### Bug Fixes
+
+* integrate sessions and other identity backend methods ([72108d8](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/commit/72108d8))
+* push forgotten db scripts ([82ce709](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/commit/82ce709))
+* tests ([c9b5741](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/commit/c9b5741))
+
+
+
 <a name="0.4.4"></a>
 ## [0.4.4](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/compare/v0.4.3...v0.4.4) (2016-12-16)
 
