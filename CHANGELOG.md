@@ -1,3 +1,13 @@
+<a name="0.4.8"></a>
+## [0.4.8](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/compare/v0.4.7...v0.4.8) (2017-01-26)
+
+
+### Bug Fixes
+
+* bump ut-tools version ([f20621c](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/commit/f20621c))
+
+
+
 <a name="0.4.7"></a>
 ## [0.4.7](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/compare/v0.4.6...v0.4.7) (2017-01-26)
 
