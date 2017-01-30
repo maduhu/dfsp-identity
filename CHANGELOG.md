@@ -1,3 +1,13 @@
+<a name="0.4.11"></a>
+## [0.4.11](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/compare/v0.4.10...v0.4.11) (2017-01-30)
+
+
+### Bug Fixes
+
+* circleci settings and npm commands ([f1a9a0e](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/commit/f1a9a0e))
+
+
+
 <a name="0.4.10"></a>
 ## [0.4.10](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/compare/v0.4.9...v0.4.10) (2017-01-27)
 
