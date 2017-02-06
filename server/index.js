@@ -1,7 +1,8 @@
 module.exports = {
   ports: [
     require('../db'),
-    require('../httpserver')
+    require('../httpserver'),
+    require('../httpclient')
   ],
   modules: {
     identity: require('../service/identity')

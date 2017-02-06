@@ -17,7 +17,7 @@ module.exports = {
   check: function (msg, $meta) {
     if (msg && (
         msg.actionId === 'identity.get' ||
-        msg.actionId === 'identity.add' |
+        msg.actionId === 'identity.add' ||
         msg.actionId === 'identity.closeSession'
       )
     ) { // expose identity get and add without authentication
@@ -39,6 +39,16 @@ module.exports = {
         }
       }).then((msg) => {
         return this.super['identity.check'](msg, $meta)
+          .then((result) => {
+            return this.bus.importMethod('directory.user.get')({
+              actorId: result['identity.check'].actorId
+            })
+            .then((person) => {
+              result.person = person
+              result.emails = []
+              return result
+            })
+          })
       })
     }
   },

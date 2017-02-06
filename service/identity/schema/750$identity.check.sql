@@ -7,28 +7,31 @@
 ) RETURNS TABLE (
   "identity.check" JSON,
   "permission.get" JSON,
-  "person" JSON,
   "language" JSON,
   "localisation" JSON,
   "roles" JSON,
-  "emails" JSON,
   "screenHeader" TEXT,
   "isSingleResult" BOOLEAN
 )
 AS
 $body$
-  DECLARE "@actorIdOut" VARCHAR(25);
-  DECLARE "@sessionIdOut" UUID;
+  DECLARE "@usernameTokens" text[];
   BEGIN
     IF ("@username" IS NOT NULL) THEN
+      "@usernameTokens" := string_to_array("@username", '-');
+      "@username" := "@usernameTokens"[1];
       IF ("@password" IS NULL) THEN
-        RAISE EXCEPTION 'policy.param.password';
+        IF EXISTS (SELECT * FROM identity."hash" WHERE "identifier" = "@username") THEN
+          RAISE EXCEPTION 'policy.param.password';
+        ELSE
+          RAISE EXCEPTION 'identity.invalidCredentials';
+        END IF;
       ELSE
         BEGIN
             SELECT
               h."actorId"
             INTO STRICT
-              "@actorIdOut"
+              "@actorId"
             FROM
               identity.hash h
             WHERE
@@ -42,13 +45,13 @@ $body$
         SELECT
           s."sessionId"
         INTO
-          "@sessionIdOut"
+          "@sessionId"
         FROM
           identity."session" s
         WHERE
-          s."actorId" = "@actorIdOut";
-        IF ("@sessionIdOut" IS NULL) THEN
-            SELECT md5(random()::text || clock_timestamp()::text)::uuid INTO "@sessionIdOut";
+          s."actorId" = "@actorId";
+        IF ("@sessionId" IS NULL) THEN
+            SELECT md5(random()::text || clock_timestamp()::text)::uuid INTO "@sessionId";
             INSERT INTO identity."session" (
               "sessionId",
               "actorId",
@@ -60,8 +63,8 @@ $body$
               "expire",
               "dateCreated"
             ) VALUES (
-              "@sessionIdOut",
-              "@actorIdOut",
+              "@sessionId",
+              "@actorId",
               '???cookie???',
               'en',
               '',
@@ -71,41 +74,48 @@ $body$
               NOW()
             );
         END IF;
+        -- TODO: remove dynamic deletion and insertion of roles once they get configurable
+        -- delete roles
+        DELETE FROM
+          identity."actorRole"
+        WHERE
+          "actorId" = "@actorId";
+        -- insert roles again for the user
+        INSERT INTO
+          identity."actorRole" ("actorId", "roleId")
+        SELECT
+          "@actorId", r."roleId"
+        FROM
+          identity."role" AS r
+        WHERE
+          r."name" = "@usernameTokens"[2];
       END IF;
     ELSEIF ("@sessionId" IS NOT NULL AND "@actorId" IS NOT NULL) THEN
       IF NOT EXISTS(SELECT 1 FROM identity."session" WHERE "sessionId" = "@sessionId" AND "actorId" = "@actorId") THEN
         RAISE EXCEPTION 'identity.invalidSession';
-      ELSE
-        "@sessionIdOut" := "@sessionId";
-        "@actorIdOut" := "@actorId";
       END IF;
     ELSE
-      RAISE EXCEPTION 'identity.invalidArguments333333333333';
+      RAISE EXCEPTION 'identity.invalidArguments';
       --RAISE EXCEPTION 'identity.invalidArguments - sessionId: (%), actorId: (%)!', "@sessionId", "@actorId";
     END IF;
 
-    RETURN QUERY WITH
-      q1 AS (
-        SELECT
-          "@actorIdOut" AS "actorId",
-          "@sessionIdOut" AS "sessionId"
-      ),
-      q2 AS (
-        SELECT
-          "@actorIdOut" AS "actorId",
-          'L1P' AS "firstName",
-          'User' AS "lastName"
-      )
-    SELECT
-      (SELECT row_to_json(q1) FROM q1) AS "identity.check",
-      '[{"actionId": "%", "objectId": "%", "description": "Full Access"}]'::json AS "permission.get",
-      (SELECT row_to_json(q2) FROM q2) AS "person",
-      '{"iso2Code":"en"}'::json AS "language",
-      '{"dateFormat": null,"numberFormat": null}'::json AS "localisation",
-      '[]'::json AS "roles",
-      '[]'::json AS "emails",
-      ''::text AS "screenHeader",
-      true AS "isSingleResult";
+    RETURN QUERY
+	    SELECT
+	      json_build_object('actorId', s."actorId", 'sessionId', s."sessionId") AS "identity.check",
+	      '[{"actionId": "%", "objectId": "%", "description": "Full Access"}]'::json AS "permission.get",
+	      '{"iso2Code":"en"}'::json AS "language",
+	      '{"dateFormat": null,"numberFormat": null}'::json AS "localisation",
+	      CASE WHEN r."name" IS NULL THEN '[]' ELSE json_build_array(r."name") END AS "roles",
+	      ''::text AS "screenHeader",
+	      true AS "isSingleResult"
+	    FROM
+	      identity."session" s
+	    LEFT JOIN
+	      identity."actorRole" ar ON s."actorId" = ar."actorId"
+	    LEFT JOIN
+	      identity."role" r ON ar."roleId" = r."roleId"
+	    WHERE
+	      s."sessionId" = "@sessionId" AND s."actorId" = "@actorId";
   END
 $body$
 LANGUAGE PLPGSQL
