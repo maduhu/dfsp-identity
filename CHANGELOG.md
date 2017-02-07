@@ -1,3 +1,18 @@
+<a name="0.5.0"></a>
+# [0.5.0](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/compare/v0.4.11...v0.5.0) (2017-02-07)
+
+
+### Bug Fixes
+
+* remove integration tests as dependency to dfsp-api have been introduced in the business logic ([9d1cfe5](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/commit/9d1cfe5))
+
+
+### Features
+
+* implement basic roles ([a7e8f29](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/commit/a7e8f29))
+
+
+
 <a name="0.4.11"></a>
 ## [0.4.11](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/compare/v0.4.10...v0.4.11) (2017-01-30)
 
