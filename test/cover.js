@@ -1,1 +1,1 @@
-require('./integration/test.identity')
+
