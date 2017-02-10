@@ -93,6 +93,26 @@ BEGIN
         VALUES (15, 'core.translation.fetch', 'Translation fetch');
     END IF;
 
+    IF NOT EXISTS (SELECT 1 FROM identity.action WHERE "actionId" = 16) THEN
+        INSERT INTO identity.action("actionId", "name", "description")
+        VALUES (16, 'rule.rule.fetch', 'Translation fetch');
+    END IF;
+
+    IF NOT EXISTS (SELECT 1 FROM identity.action WHERE "actionId" = 17) THEN
+        INSERT INTO identity.action("actionId", "name", "description")
+        VALUES (17, 'rule.item.fetch', 'Translation fetch');
+    END IF;
+
+    IF NOT EXISTS (SELECT 1 FROM identity.action WHERE "actionId" = 18) THEN
+        INSERT INTO identity.action("actionId", "name", "description")
+        VALUES (18, 'rule.rule.add', 'Translation fetch');
+    END IF;
+
+    IF NOT EXISTS (SELECT 1 FROM identity.action WHERE "actionId" = 19) THEN
+        INSERT INTO identity.action("actionId", "name", "description")
+        VALUES (19, 'rule.rule.edit', 'Translation fetch');
+    END IF;
+
     -- roles
 
     IF NOT EXISTS (SELECT 1 FROM identity.role WHERE "roleId" = 1) THEN
@@ -148,9 +168,13 @@ BEGIN
         INSERT INTO identity."roleAction"("roleId", "actionId")
         VALUES (3, 9);
     END IF;
-    IF NOT EXISTS (SELECT 1 FROM identity."roleAction" WHERE "roleId" = 1 AND "actionId" = 10) THEN
+    IF NOT EXISTS (SELECT 1 FROM identity."roleAction" WHERE "roleId" = 2 AND "actionId" = 10) THEN
         INSERT INTO identity."roleAction"("roleId", "actionId")
-        VALUES (1, 10);
+        VALUES (2, 10);
+    END IF;
+    IF NOT EXISTS (SELECT 1 FROM identity."roleAction" WHERE "roleId" = 3 AND "actionId" = 10) THEN
+        INSERT INTO identity."roleAction"("roleId", "actionId")
+        VALUES (3, 10);
     END IF;
     IF NOT EXISTS (SELECT 1 FROM identity."roleAction" WHERE "roleId" = 2 AND "actionId" = 11) THEN
         INSERT INTO identity."roleAction"("roleId", "actionId")
@@ -171,6 +195,22 @@ BEGIN
     IF NOT EXISTS (SELECT 1 FROM identity."roleAction" WHERE "roleId" = 1 AND "actionId" = 15) THEN
         INSERT INTO identity."roleAction"("roleId", "actionId")
         VALUES (1, 15);
+    END IF;
+    IF NOT EXISTS (SELECT 1 FROM identity."roleAction" WHERE "roleId" = 1 AND "actionId" = 16) THEN
+        INSERT INTO identity."roleAction"("roleId", "actionId")
+        VALUES (1, 16);
+    END IF;
+    IF NOT EXISTS (SELECT 1 FROM identity."roleAction" WHERE "roleId" = 1 AND "actionId" = 17) THEN
+        INSERT INTO identity."roleAction"("roleId", "actionId")
+        VALUES (1, 17);
+    END IF;
+    IF NOT EXISTS (SELECT 1 FROM identity."roleAction" WHERE "roleId" = 1 AND "actionId" = 18) THEN
+        INSERT INTO identity."roleAction"("roleId", "actionId")
+        VALUES (1, 18);
+    END IF;
+    IF NOT EXISTS (SELECT 1 FROM identity."roleAction" WHERE "roleId" = 1 AND "actionId" = 19) THEN
+        INSERT INTO identity."roleAction"("roleId", "actionId")
+        VALUES (1, 19);
     END IF;
 END
 $do$
