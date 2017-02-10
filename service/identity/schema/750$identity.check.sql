@@ -102,12 +102,18 @@ $body$
     RETURN QUERY
       SELECT
         json_build_object('actorId', s."actorId", 'sessionId', s."sessionId") AS "identity.check",
-        (SELECT COALESCE(json_agg(json_build_object('actionId', a.name, 'objectId', '%', 'description', a.description)), '[]')
-          FROM identity."action" AS a
-          WHERE a."actionId" IN (
-            SELECT ra."actionId"
-            FROM identity."roleAction" AS ra
-            WHERE ra."roleId" = ANY(array_agg(r."roleId"))
+        (
+          SELECT array_to_json(
+            ARRAY(
+              SELECT json_build_object('actionId', a.name, 'objectId', '%', 'description', a.description)
+              FROM identity."action" AS a
+              WHERE a."actionId" IN (
+                  SELECT ra."actionId"
+                  FROM identity."roleAction" AS ra
+                  WHERE ra."roleId" = ANY(array_agg(r."roleId"))
+              )
+              GROUP BY a."name", a."description"
+            )
           )
         )  AS "permission.get",
         '{"iso2Code":"en"}'::json AS "language",
