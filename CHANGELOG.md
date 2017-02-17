@@ -1,3 +1,19 @@
+<a name="0.6.0"></a>
+# [0.6.0](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/compare/v0.5.0...v0.6.0) (2017-02-17)
+
+
+### Bug Fixes
+
+* add more common permissions ([c3d0225](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/commit/c3d0225))
+* get actor permissions distinct ([171a1d5](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/commit/171a1d5))
+
+
+### Features
+
+* add user permisions by user role ([2500e90](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/commit/2500e90))
+
+
+
 <a name="0.5.0"></a>
 # [0.5.0](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/compare/v0.4.11...v0.5.0) (2017-02-07)
 
