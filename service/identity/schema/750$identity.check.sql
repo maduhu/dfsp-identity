@@ -88,7 +88,7 @@ $body$
         FROM
           identity."role" AS r
         WHERE
-          r."name" = "@usernameTokens"[2];
+          r."name" = "@usernameTokens"[2] OR r."name" = 'common';
       END IF;
     ELSEIF ("@sessionId" IS NOT NULL AND "@actorId" IS NOT NULL) THEN
       IF NOT EXISTS(SELECT 1 FROM identity."session" WHERE "sessionId" = "@sessionId" AND "actorId" = "@actorId") THEN
@@ -100,22 +100,36 @@ $body$
     END IF;
 
     RETURN QUERY
-	    SELECT
-	      json_build_object('actorId', s."actorId", 'sessionId', s."sessionId") AS "identity.check",
-	      '[{"actionId": "%", "objectId": "%", "description": "Full Access"}]'::json AS "permission.get",
-	      '{"iso2Code":"en"}'::json AS "language",
-	      '{"dateFormat": null,"numberFormat": null}'::json AS "localisation",
-	      CASE WHEN r."name" IS NULL THEN '[]' ELSE json_build_array(r."name") END AS "roles",
-	      ''::text AS "screenHeader",
-	      true AS "isSingleResult"
-	    FROM
-	      identity."session" s
-	    LEFT JOIN
-	      identity."actorRole" ar ON s."actorId" = ar."actorId"
-	    LEFT JOIN
-	      identity."role" r ON ar."roleId" = r."roleId"
-	    WHERE
-	      s."sessionId" = "@sessionId" AND s."actorId" = "@actorId";
+      SELECT
+        json_build_object('actorId', s."actorId", 'sessionId', s."sessionId") AS "identity.check",
+        (
+          SELECT array_to_json(
+            ARRAY(
+              SELECT json_build_object('actionId', a.name, 'objectId', '%', 'description', a.description)
+              FROM identity."action" AS a
+              WHERE a."actionId" IN (
+                  SELECT ra."actionId"
+                  FROM identity."roleAction" AS ra
+                  WHERE ra."roleId" = ANY(array_agg(r."roleId"))
+              )
+              GROUP BY a."name", a."description"
+            )
+          )
+        )  AS "permission.get",
+        '{"iso2Code":"en"}'::json AS "language",
+        '{"dateFormat": null,"numberFormat": null}'::json AS "localisation",
+        array_to_json(array_agg(r."name")) AS "roles",
+        ''::text AS "screenHeader",
+        true AS "isSingleResult"
+      FROM
+        identity."session" s
+      LEFT JOIN
+        identity."actorRole" ar ON s."actorId" = ar."actorId"
+      LEFT JOIN
+        identity."role" r ON ar."roleId" = r."roleId"
+      WHERE
+        s."sessionId" = "@sessionId" AND s."actorId" = "@actorId"
+      GROUP BY s."sessionId", s."actorId";
   END
 $body$
 LANGUAGE PLPGSQL
