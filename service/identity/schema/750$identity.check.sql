@@ -117,7 +117,7 @@ $body$
           )
         )  AS "permission.get",
         '{"iso2Code":"en"}'::json AS "language",
-        '{"dateFormat": null,"numberFormat": null}'::json AS "localisation",
+        '{"dateFormat": "MM/DD/YYYY","numberFormat": null}'::json AS "localisation",
         array_to_json(array_agg(r."name")) AS "roles",
         ''::text AS "screenHeader",
         true AS "isSingleResult"
