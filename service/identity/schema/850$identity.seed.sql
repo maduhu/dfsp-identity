@@ -55,7 +55,7 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM identity.action WHERE "actionId" = 8) THEN
         INSERT INTO identity.action("actionId", "name", "description")
-        VALUES (8, 'bulk.batch.return', 'Return batch');
+        VALUES (8, 'bulk.batch.disable', 'Disable batch');
     END IF;
 
     IF NOT EXISTS (SELECT 1 FROM identity.action WHERE "actionId" = 9) THEN
