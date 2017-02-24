@@ -127,7 +127,7 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM identity.role WHERE "roleId" = 3) THEN
         INSERT INTO identity.role("roleId", "name", "description")
-        VALUES (3, 'cheker', 'Batch payment cheker role');
+        VALUES (3, 'checker', 'Batch payment checker role');
     END IF;
 
     -- role-action mapping
