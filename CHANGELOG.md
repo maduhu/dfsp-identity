@@ -1,3 +1,13 @@
+<a name="0.7.1"></a>
+## [0.7.1](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/compare/v0.7.0...v0.7.1) (2017-02-24)
+
+
+### Bug Fixes
+
+* fix typo in checker seeder ([5aae811](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/commit/5aae811))
+
+
+
 <a name="0.7.0"></a>
 # [0.7.0](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/compare/v0.6.0...v0.7.0) (2017-02-21)
 
