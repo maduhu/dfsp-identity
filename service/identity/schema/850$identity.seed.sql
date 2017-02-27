@@ -1,3 +1,4 @@
+-- Insert identity hashes
 DO
 $do$
 BEGIN
@@ -14,203 +15,67 @@ BEGIN
         VALUES ('test-2', 'ussd', '0122523365225', '', '', '', true);
     END IF;
 
-    -- PERMISIONS
+-- Insert actions
+INSERT INTO
+   identity."action" ("actionId", "name", "description")
+VALUES
+  (1, 'bulk.batch.add', 'Create new batch'),
+  (2, 'bulk.batch.edit', 'Edit batch'),
+  (3, 'bulk.batch.fetch', 'Fetch batches by criteria'),
+  (4, 'bulk.batch.get', 'Get batch details'),
+  (5, 'bulk.payment.add', 'Create payment'),
+  (6, 'bulk.payment.edit', 'Edit payment'),
+  (7, 'bulk.batch.reject', 'Reject batch'),
+  (8, 'bulk.batch.disable', 'Disable batch'),
+  (9, 'bulk.batch.pay', 'Pay batch'),
+  (10, 'bulk.batch.check', 'Chech batch'),
+  (11, 'bulk.batch.ready', 'Mark batch as ready'),
+  (12, 'bulk.batch.delete', 'Mark batch as deleted'),
+  (13, 'bulk.payment.check', 'Check payment'),
+  (14, 'bulk.payment.disable', 'Disable payment'),
+  (15, 'bulk.payment.edit', 'Edit payment'),
+  (16, 'core.translation.fetch', 'Translation fetch'),
+  (17, 'rule.rule.fetch', 'Rule fetch'),
+  (18, 'rule.item.fetch', 'Item fetch'),
+  (19, 'rule.rule.add', 'Rule add'),
+  (20, 'rule.rule.edit', 'Rule edit')
+ON CONFLICT ("actionId") DO UPDATE SET "name" = EXCLUDED.name, "description" = EXCLUDED.description;
 
-    -- actions
+-- insert roles
+INSERT INTO
+   identity."role" ("roleId", "name", "description")
+VALUES
+  (1, 'common', 'Default role'),
+  (2, 'maker', 'Batch payment maker role'),
+  (3, 'checker', 'Batch payment checker role')
+ON CONFLICT ("roleId") DO UPDATE SET "name" = EXCLUDED.name, "description" = EXCLUDED.description;
 
-    IF NOT EXISTS (SELECT 1 FROM identity.action WHERE "actionId" = 1) THEN
-        INSERT INTO identity.action("actionId", "name", "description")
-        VALUES (1, 'bulk.batch.add', 'Create new batch');
-    END IF;
+-- insert role-action mapping
+INSERT INTO
+   identity."roleAction" ("roleId", "actionId")
+VALUES
+  (1, 16),
+  (1, 17),
+  (1, 18),
+  (1, 19),
+  (1, 20),
+  (2, 1),
+  (2, 2),
+  (2, 3),
+  (2, 4),
+  (2, 5),
+  (2, 6),
+  (2, 10),
+  (2, 11),
+  (2, 12),
+  (2, 13),
+  (2, 14),
+  (2, 15),
+  (3, 7),
+  (3, 8),
+  (3, 9),
+  (3, 10)
+ON CONFLICT DO NOTHING;
 
-    IF NOT EXISTS (SELECT 1 FROM identity.action WHERE "actionId" = 2) THEN
-        INSERT INTO identity.action("actionId", "name", "description")
-        VALUES (2, 'bulk.batch.edit', 'Edit batch');
-    END IF;
-
-    IF NOT EXISTS (SELECT 1 FROM identity.action WHERE "actionId" = 3) THEN
-        INSERT INTO identity.action("actionId", "name", "description")
-        VALUES (3, 'bulk.batch.fetch', 'Fetch batches by criteria');
-    END IF;
-
-    IF NOT EXISTS (SELECT 1 FROM identity.action WHERE "actionId" = 4) THEN
-        INSERT INTO identity.action("actionId", "name", "description")
-        VALUES (4, 'bulk.batch.get', 'Get batch details');
-    END IF;
-
-    IF NOT EXISTS (SELECT 1 FROM identity.action WHERE "actionId" = 5) THEN
-        INSERT INTO identity.action("actionId", "name", "description")
-        VALUES (5, 'bulk.payment.add', 'Create payment');
-    END IF;
-
-    IF NOT EXISTS (SELECT 1 FROM identity.action WHERE "actionId" = 6) THEN
-        INSERT INTO identity.action("actionId", "name", "description")
-        VALUES (6, 'bulk.payment.edit', 'Edit payment');
-    END IF;
-
-    IF NOT EXISTS (SELECT 1 FROM identity.action WHERE "actionId" = 7) THEN
-        INSERT INTO identity.action("actionId", "name", "description")
-        VALUES (7, 'bulk.batch.reject', 'Reject batch');
-    END IF;
-
-    IF NOT EXISTS (SELECT 1 FROM identity.action WHERE "actionId" = 8) THEN
-        INSERT INTO identity.action("actionId", "name", "description")
-        VALUES (8, 'bulk.batch.disable', 'Disable batch');
-    END IF;
-
-    IF NOT EXISTS (SELECT 1 FROM identity.action WHERE "actionId" = 9) THEN
-        INSERT INTO identity.action("actionId", "name", "description")
-        VALUES (9, 'bulk.batch.pay', 'Pay batch');
-    END IF;
-
-    IF NOT EXISTS (SELECT 1 FROM identity.action WHERE "actionId" = 10) THEN
-        INSERT INTO identity.action("actionId", "name", "description")
-        VALUES (10, 'bulk.batch.check', 'Chech batch');
-    END IF;
-
-    IF NOT EXISTS (SELECT 1 FROM identity.action WHERE "actionId" = 11) THEN
-        INSERT INTO identity.action("actionId", "name", "description")
-        VALUES (11, 'bulk.batch.ready', 'Mark batch as ready');
-    END IF;
-
-    IF NOT EXISTS (SELECT 1 FROM identity.action WHERE "actionId" = 12) THEN
-        INSERT INTO identity.action("actionId", "name", "description")
-        VALUES (12, 'bulk.payment.check', 'Check payment');
-    END IF;
-
-    IF NOT EXISTS (SELECT 1 FROM identity.action WHERE "actionId" = 13) THEN
-        INSERT INTO identity.action("actionId", "name", "description")
-        VALUES (13, 'bulk.payment.disable', 'Disable payment');
-    END IF;
-
-    IF NOT EXISTS (SELECT 1 FROM identity.action WHERE "actionId" = 14) THEN
-        INSERT INTO identity.action("actionId", "name", "description")
-        VALUES (14, 'bulk.payment.edit', 'Edit payment');
-    END IF;
-
-    IF NOT EXISTS (SELECT 1 FROM identity.action WHERE "actionId" = 15) THEN
-        INSERT INTO identity.action("actionId", "name", "description")
-        VALUES (15, 'core.translation.fetch', 'Translation fetch');
-    END IF;
-
-    IF NOT EXISTS (SELECT 1 FROM identity.action WHERE "actionId" = 16) THEN
-        INSERT INTO identity.action("actionId", "name", "description")
-        VALUES (16, 'rule.rule.fetch', 'Translation fetch');
-    END IF;
-
-    IF NOT EXISTS (SELECT 1 FROM identity.action WHERE "actionId" = 17) THEN
-        INSERT INTO identity.action("actionId", "name", "description")
-        VALUES (17, 'rule.item.fetch', 'Translation fetch');
-    END IF;
-
-    IF NOT EXISTS (SELECT 1 FROM identity.action WHERE "actionId" = 18) THEN
-        INSERT INTO identity.action("actionId", "name", "description")
-        VALUES (18, 'rule.rule.add', 'Translation fetch');
-    END IF;
-
-    IF NOT EXISTS (SELECT 1 FROM identity.action WHERE "actionId" = 19) THEN
-        INSERT INTO identity.action("actionId", "name", "description")
-        VALUES (19, 'rule.rule.edit', 'Translation fetch');
-    END IF;
-
-    -- roles
-
-    IF NOT EXISTS (SELECT 1 FROM identity.role WHERE "roleId" = 1) THEN
-        INSERT INTO identity.role("roleId", "name", "description")
-        VALUES (1, 'common', 'Default role');
-    END IF;
-
-    IF NOT EXISTS (SELECT 1 FROM identity.role WHERE "roleId" = 2) THEN
-        INSERT INTO identity.role("roleId", "name", "description")
-        VALUES (2, 'maker', 'Batch payment maker role');
-    END IF;
-
-    IF NOT EXISTS (SELECT 1 FROM identity.role WHERE "roleId" = 3) THEN
-        INSERT INTO identity.role("roleId", "name", "description")
-        VALUES (3, 'checker', 'Batch payment checker role');
-    END IF;
-
-    -- role-action mapping
-
-    IF NOT EXISTS (SELECT 1 FROM identity."roleAction" WHERE "roleId" = 2 AND "actionId" = 1) THEN
-        INSERT INTO identity."roleAction"("roleId", "actionId")
-        VALUES (2, 1);
-    END IF;
-    IF NOT EXISTS (SELECT 1 FROM identity."roleAction" WHERE "roleId" = 2 AND "actionId" = 2) THEN
-        INSERT INTO identity."roleAction"("roleId", "actionId")
-        VALUES (2, 2);
-    END IF;
-    IF NOT EXISTS (SELECT 1 FROM identity."roleAction" WHERE "roleId" = 2 AND "actionId" = 3) THEN
-        INSERT INTO identity."roleAction"("roleId", "actionId")
-        VALUES (2, 3);
-    END IF;
-    IF NOT EXISTS (SELECT 1 FROM identity."roleAction" WHERE "roleId" = 2 AND "actionId" = 4) THEN
-        INSERT INTO identity."roleAction"("roleId", "actionId")
-        VALUES (2, 4);
-    END IF;
-    IF NOT EXISTS (SELECT 1 FROM identity."roleAction" WHERE "roleId" = 2 AND "actionId" = 5) THEN
-        INSERT INTO identity."roleAction"("roleId", "actionId")
-        VALUES (2, 5);
-    END IF;
-    IF NOT EXISTS (SELECT 1 FROM identity."roleAction" WHERE "roleId" = 2 AND "actionId" = 6) THEN
-        INSERT INTO identity."roleAction"("roleId", "actionId")
-        VALUES (2, 6);
-    END IF;
-    IF NOT EXISTS (SELECT 1 FROM identity."roleAction" WHERE "roleId" = 3 AND "actionId" = 7) THEN
-        INSERT INTO identity."roleAction"("roleId", "actionId")
-        VALUES (3, 7);
-    END IF;
-    IF NOT EXISTS (SELECT 1 FROM identity."roleAction" WHERE "roleId" = 3 AND "actionId" = 8) THEN
-        INSERT INTO identity."roleAction"("roleId", "actionId")
-        VALUES (3, 8);
-    END IF;
-    IF NOT EXISTS (SELECT 1 FROM identity."roleAction" WHERE "roleId" = 3 AND "actionId" = 9) THEN
-        INSERT INTO identity."roleAction"("roleId", "actionId")
-        VALUES (3, 9);
-    END IF;
-    IF NOT EXISTS (SELECT 1 FROM identity."roleAction" WHERE "roleId" = 2 AND "actionId" = 10) THEN
-        INSERT INTO identity."roleAction"("roleId", "actionId")
-        VALUES (2, 10);
-    END IF;
-    IF NOT EXISTS (SELECT 1 FROM identity."roleAction" WHERE "roleId" = 3 AND "actionId" = 10) THEN
-        INSERT INTO identity."roleAction"("roleId", "actionId")
-        VALUES (3, 10);
-    END IF;
-    IF NOT EXISTS (SELECT 1 FROM identity."roleAction" WHERE "roleId" = 2 AND "actionId" = 11) THEN
-        INSERT INTO identity."roleAction"("roleId", "actionId")
-        VALUES (2, 11);
-    END IF;
-    IF NOT EXISTS (SELECT 1 FROM identity."roleAction" WHERE "roleId" = 2 AND "actionId" = 12) THEN
-        INSERT INTO identity."roleAction"("roleId", "actionId")
-        VALUES (2, 12);
-    END IF;
-    IF NOT EXISTS (SELECT 1 FROM identity."roleAction" WHERE "roleId" = 2 AND "actionId" = 13) THEN
-        INSERT INTO identity."roleAction"("roleId", "actionId")
-        VALUES (2, 13);
-    END IF;
-    IF NOT EXISTS (SELECT 1 FROM identity."roleAction" WHERE "roleId" = 2 AND "actionId" = 14) THEN
-        INSERT INTO identity."roleAction"("roleId", "actionId")
-        VALUES (2, 14);
-    END IF;
-    IF NOT EXISTS (SELECT 1 FROM identity."roleAction" WHERE "roleId" = 1 AND "actionId" = 15) THEN
-        INSERT INTO identity."roleAction"("roleId", "actionId")
-        VALUES (1, 15);
-    END IF;
-    IF NOT EXISTS (SELECT 1 FROM identity."roleAction" WHERE "roleId" = 1 AND "actionId" = 16) THEN
-        INSERT INTO identity."roleAction"("roleId", "actionId")
-        VALUES (1, 16);
-    END IF;
-    IF NOT EXISTS (SELECT 1 FROM identity."roleAction" WHERE "roleId" = 1 AND "actionId" = 17) THEN
-        INSERT INTO identity."roleAction"("roleId", "actionId")
-        VALUES (1, 17);
-    END IF;
-    IF NOT EXISTS (SELECT 1 FROM identity."roleAction" WHERE "roleId" = 1 AND "actionId" = 18) THEN
-        INSERT INTO identity."roleAction"("roleId", "actionId")
-        VALUES (1, 18);
-    END IF;
-    IF NOT EXISTS (SELECT 1 FROM identity."roleAction" WHERE "roleId" = 1 AND "actionId" = 19) THEN
-        INSERT INTO identity."roleAction"("roleId", "actionId")
-        VALUES (1, 19);
-    END IF;
 END
 $do$
