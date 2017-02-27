@@ -1,3 +1,13 @@
+<a name="0.7.3"></a>
+## [0.7.3](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/compare/v0.7.2...v0.7.3) (2017-02-27)
+
+
+### Bug Fixes
+
+* add delete action and rework seeder implementation ([7e6e26e](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/commit/7e6e26e))
+
+
+
 <a name="0.7.2"></a>
 ## [0.7.2](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/compare/v0.7.1...v0.7.2) (2017-02-27)
 
