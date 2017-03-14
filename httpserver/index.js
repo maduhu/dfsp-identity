@@ -4,6 +4,7 @@ module.exports = {
   createPort: require('ut-port-httpserver'),
   logLevel: 'trace',
   api: ['identity'],
+  imports: ['identity.start'],
   port: 8012,
   bundle: 'identity',
   dist: path.resolve(__dirname, '../dist'),
