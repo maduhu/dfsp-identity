@@ -1,3 +1,13 @@
+<a name="0.7.4"></a>
+## [0.7.4](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/compare/v0.7.3...v0.7.4) (2017-03-14)
+
+
+### Bug Fixes
+
+* add possibility to inspect db ([a946e9e](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/commit/a946e9e))
+
+
+
 <a name="0.7.3"></a>
 ## [0.7.3](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/compare/v0.7.2...v0.7.3) (2017-02-27)
 
