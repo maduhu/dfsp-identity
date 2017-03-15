@@ -1,6 +1,6 @@
 {
   "name": "@leveloneproject/dfsp-identity",
-  "version": "0.7.4",
+  "version": "0.7.5",
   "description": "DFSP Identity service",
   "main": "index.js",
   "scripts": {

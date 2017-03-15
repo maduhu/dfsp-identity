@@ -1,3 +1,13 @@
+<a name="0.7.5"></a>
+## [0.7.5](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/compare/v0.7.4...v0.7.5) (2017-03-15)
+
+
+### Bug Fixes
+
+* change delimiter for maker/checker login ([014c8ce](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/commit/014c8ce))
+
+
+
 <a name="0.7.4"></a>
 ## [0.7.4](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/compare/v0.7.3...v0.7.4) (2017-03-14)
 
