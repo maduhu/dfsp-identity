@@ -17,64 +17,108 @@ BEGIN
 
 -- Insert actions
 INSERT INTO
-   identity."action" ("actionId", "name", "description")
+   identity."action" ("name", "description")
 VALUES
-  (1, 'bulk.batch.add', 'Create new batch'),
-  (2, 'bulk.batch.edit', 'Edit batch'),
-  (3, 'bulk.batch.fetch', 'Fetch batches by criteria'),
-  (4, 'bulk.batch.get', 'Get batch details'),
-  (5, 'bulk.payment.add', 'Create payment'),
-  (6, 'bulk.payment.edit', 'Edit payment'),
-  (7, 'bulk.batch.reject', 'Reject batch'),
-  (8, 'bulk.batch.disable', 'Disable batch'),
-  (9, 'bulk.batch.pay', 'Pay batch'),
-  (10, 'bulk.batch.check', 'Chech batch'),
-  (11, 'bulk.batch.ready', 'Mark batch as ready'),
-  (12, 'bulk.batch.delete', 'Mark batch as deleted'),
-  (13, 'bulk.payment.check', 'Check payment'),
-  (14, 'bulk.payment.disable', 'Disable payment'),
-  (15, 'bulk.payment.edit', 'Edit payment'),
-  (16, 'core.translation.fetch', 'Translation fetch'),
-  (17, 'rule.rule.fetch', 'Rule fetch'),
-  (18, 'rule.item.fetch', 'Item fetch'),
-  (19, 'rule.rule.add', 'Rule add'),
-  (20, 'rule.rule.edit', 'Rule edit')
-ON CONFLICT ("actionId") DO UPDATE SET "name" = EXCLUDED.name, "description" = EXCLUDED.description;
+  -- batch
+  ('bulk.batch.add', 'Create new batch'),
+  ('bulk.batch.edit', 'Edit batch'),
+  ('bulk.batch.fetch', 'Fetch batches by criteria'),
+  ('bulk.batch.get', 'Get batch details'),
+  ('bulk.batch.reject', 'Reject batch'),
+  ('bulk.batch.disable', 'Disable batch'),
+  ('bulk.batch.pay', 'Pay batch'),
+  ('bulk.batch.check', 'Chech batch'),
+  ('bulk.batch.ready', 'Mark batch as ready'),
+  ('bulk.batch.delete', 'Mark batch as deleted'),
+  -- payment
+  ('bulk.payment.check', 'Check payment'),
+  ('bulk.payment.disable', 'Disable payment'),
+  ('bulk.payment.edit', 'Edit payment'),
+  ('bulk.payment.fetch', 'Fetch payments'),
+  ('bulk.payment.add', 'Create payment'),
+  -- bulk statuses
+  ('bulk.paymentStatus.fetch', 'Fetch payment status'),
+  ('bulk.batchStatus.fetch', 'Fetch batch status'),
+  -- core
+  ('core.translation.fetch', 'Translation fetch'),
+  -- rule
+  ('rule.rule.fetch', 'Rule fetch'),
+  ('rule.item.fetch', 'Item fetch'),
+  ('rule.rule.add', 'Rule add'),
+  ('rule.rule.edit', 'Rule edit')
+ON CONFLICT ("name") DO UPDATE SET "description" = EXCLUDED.description;
 
 -- insert roles
 INSERT INTO
-   identity."role" ("roleId", "name", "description")
+   identity."role" ("name", "description")
 VALUES
-  (1, 'common', 'Default role'),
-  (2, 'maker', 'Batch payment maker role'),
-  (3, 'checker', 'Batch payment checker role')
-ON CONFLICT ("roleId") DO UPDATE SET "name" = EXCLUDED.name, "description" = EXCLUDED.description;
+  ('common', 'Default role'),
+  ('maker', 'Batch payment maker role'),
+  ('checker', 'Batch payment checker role')
+ON CONFLICT ("name") DO UPDATE SET "description" = EXCLUDED.description;
 
--- insert role-action mapping
 INSERT INTO
    identity."roleAction" ("roleId", "actionId")
-VALUES
-  (1, 16),
-  (1, 17),
-  (1, 18),
-  (1, 19),
-  (1, 20),
-  (2, 1),
-  (2, 2),
-  (2, 3),
-  (2, 4),
-  (2, 5),
-  (2, 6),
-  (2, 10),
-  (2, 11),
-  (2, 12),
-  (2, 13),
-  (2, 14),
-  (2, 15),
-  (3, 7),
-  (3, 8),
-  (3, 9),
-  (3, 10)
+SELECT
+    (SELECT r."roleId" FROM identity."role" r WHERE r."name" = 'common'),
+    a."actionId"
+FROM
+    identity."action" a
+WHERE
+    a.name IN (
+        'core.translation.fetch',
+        'rule.rule.fetch',
+        'rule.item.fetch',
+        'rule.rule.add',
+        'rule.rule.edit'
+    )
+ON CONFLICT DO NOTHING;
+
+INSERT INTO
+   identity."roleAction" ("roleId", "actionId")
+SELECT
+    (SELECT r."roleId" FROM identity."role" r WHERE r."name" = 'maker'),
+    a."actionId"
+FROM
+    identity."action" a
+WHERE
+    a.name IN (
+        'bulk.batch.add',
+        'bulk.batch.edit',
+        'bulk.batch.fetch',
+        'bulk.batch.get',
+        'bulk.payment.add',
+        'bulk.payment.edit',
+        'bulk.batch.check',
+        'bulk.batch.ready',
+        'bulk.batch.delete',
+        'bulk.payment.check',
+        'bulk.payment.disable',
+        'bulk.payment.edit',
+        'bulk.payment.fetch',
+        'bulk.batchStatus.fetch',
+        'bulk.paymentStatus.fetch'
+    )
+ON CONFLICT DO NOTHING;
+
+
+INSERT INTO
+   identity."roleAction" ("roleId", "actionId")
+SELECT
+    (SELECT r."roleId" FROM identity."role" r WHERE r."name" = 'checker'),
+    a."actionId"
+FROM
+    identity."action" a
+WHERE
+    a.name IN (
+        'bulk.batch.reject',
+        'bulk.batch.disable',
+        'bulk.batch.pay',
+        'bulk.batch.check',
+        'bulk.payment.fetch',
+        'bulk.batchStatus.fetch',
+        'bulk.paymentStatus.fetch'
+    )
 ON CONFLICT DO NOTHING;
 
 END
