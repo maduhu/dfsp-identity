@@ -1,4 +1,4 @@
-require('./error')
+const error = require('./error')
 const crypto = require('crypto')
 const path = require('path')
 const hParams = {
@@ -7,8 +7,14 @@ const hParams = {
   'keylen': 512,
   'digest': 'sha512'
 }
-var joi = require('joi')
+const joi = require('joi')
 var db = null
+function checkPermission (permissions, action) {
+  return new RegExp(permissions.map(function (permission) {
+    return permission.actionId.replace('%', '(.+?)')
+  }).join('|')).test(action)
+}
+
 module.exports = {
   schema: [{
     path: path.join(__dirname, 'schema'),
@@ -77,6 +83,9 @@ module.exports = {
       }).then((msg) => {
         return this.super['identity.check'](msg, $meta)
           .then((result) => {
+            if (msg.actionId && !checkPermission(result['permission.get'], msg.actionId)) {
+              throw error.securityViolation()
+            }
             return this.bus.importMethod('directory.user.get')({
               actorId: result['identity.check'].actorId
             })
