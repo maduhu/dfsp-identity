@@ -18,7 +18,7 @@ $body$
   DECLARE "@usernameTokens" text[];
   BEGIN
     IF ("@username" IS NOT NULL) THEN
-      "@usernameTokens" := string_to_array("@username", '-');
+      "@usernameTokens" := string_to_array("@username", '@');
       "@username" := "@usernameTokens"[1];
       IF ("@password" IS NULL) THEN
         IF EXISTS (SELECT * FROM identity."hash" WHERE "identifier" = "@username") THEN
