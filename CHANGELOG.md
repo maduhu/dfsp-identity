@@ -1,3 +1,18 @@
+<a name="0.8.0"></a>
+# [0.8.0](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/compare/v0.7.5...v0.8.0) (2017-03-15)
+
+
+### Bug Fixes
+
+* add ledger.account.fetch permission to checker ([69d5712](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/commit/69d5712))
+
+
+### Features
+
+* implement backend permission checks ([fce7338](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/commit/fce7338))
+
+
+
 <a name="0.7.5"></a>
 ## [0.7.5](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/compare/v0.7.4...v0.7.5) (2017-03-15)
 
