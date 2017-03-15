@@ -1,3 +1,13 @@
+<a name="0.8.1"></a>
+## [0.8.1](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/compare/v0.8.0...v0.8.1) (2017-03-15)
+
+
+### Bug Fixes
+
+* add dependency to ut-port-http ([e7fb00f](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/commit/e7fb00f))
+
+
+
 <a name="0.8.0"></a>
 # [0.8.0](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/compare/v0.7.5...v0.8.0) (2017-03-15)
 
