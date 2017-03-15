@@ -45,7 +45,9 @@ VALUES
   ('rule.rule.fetch', 'Rule fetch'),
   ('rule.item.fetch', 'Item fetch'),
   ('rule.rule.add', 'Rule add'),
-  ('rule.rule.edit', 'Rule edit')
+  ('rule.rule.edit', 'Rule edit'),
+  -- ledger
+  ('ledger.account.fetch', 'Fetch accounts')
 ON CONFLICT ("name") DO UPDATE SET "description" = EXCLUDED.description;
 
 -- insert roles
@@ -117,7 +119,8 @@ WHERE
         'bulk.batch.check',
         'bulk.payment.fetch',
         'bulk.batchStatus.fetch',
-        'bulk.paymentStatus.fetch'
+        'bulk.paymentStatus.fetch',
+        'ledger.account.fetch'
     )
 ON CONFLICT DO NOTHING;
 
