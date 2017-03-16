@@ -1,3 +1,13 @@
+<a name="0.8.5"></a>
+## [0.8.5](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/compare/v0.8.4...v0.8.5) (2017-03-16)
+
+
+### Bug Fixes
+
+* add dependency to ut-port-htto ([f533c48](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/commit/f533c48))
+
+
+
 <a name="0.8.4"></a>
 ## [0.8.4](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/compare/v0.8.3...v0.8.4) (2017-03-16)
 

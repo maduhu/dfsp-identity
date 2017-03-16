@@ -1,6 +1,6 @@
 {
   "name": "@leveloneproject/dfsp-identity",
-  "version": "0.8.4",
+  "version": "0.8.5",
   "description": "DFSP Identity service",
   "main": "index.js",
   "scripts": {
@@ -40,7 +40,6 @@
     "ut-port-performance": "^5.4.7",
     "ut-port-postgres": "^5.7.5",
     "ut-port-script": "^5.4.7",
-
     "ut-port-http": "^6.4.1",
     "ut-port-jsonrpc": "^5.5.16",
     "ut-run": "^7.2.1",
