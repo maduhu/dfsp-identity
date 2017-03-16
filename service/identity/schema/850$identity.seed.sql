@@ -118,7 +118,10 @@ WHERE
         'bulk.batch.pay',
         'bulk.batch.check',
         'bulk.batch.fetch',
+        'bulk.batch.get',
         'bulk.payment.fetch',
+        'bulk.payment.check',
+        'bulk.payment.disable',
         'bulk.batchStatus.fetch',
         'bulk.paymentStatus.fetch',
         'ledger.account.fetch'

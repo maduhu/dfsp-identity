@@ -40,8 +40,7 @@
     "ut-port-performance": "^5.4.7",
     "ut-port-postgres": "^5.7.5",
     "ut-port-script": "^5.4.7",
-    "ut-port-http": "^6.4.1",
-    "ut-port-jsonrpc": "^5.5.9",
+    "ut-port-jsonrpc": "^5.5.16",
     "ut-run": "^7.2.1",
     "pm2": "2.0.18"
   },
