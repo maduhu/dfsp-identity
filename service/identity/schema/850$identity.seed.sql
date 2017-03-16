@@ -117,6 +117,7 @@ WHERE
         'bulk.batch.disable',
         'bulk.batch.pay',
         'bulk.batch.check',
+        'bulk.batch.fetch',
         'bulk.payment.fetch',
         'bulk.batchStatus.fetch',
         'bulk.paymentStatus.fetch',
