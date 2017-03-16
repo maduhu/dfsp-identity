@@ -1,3 +1,13 @@
+<a name="0.8.4"></a>
+## [0.8.4](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/compare/v0.8.3...v0.8.4) (2017-03-16)
+
+
+### Bug Fixes
+
+* add missing permissions ([1128d32](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/commit/1128d32))
+
+
+
 <a name="0.8.3"></a>
 ## [0.8.3](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/compare/v0.8.2...v0.8.3) (2017-03-16)
 
