@@ -1,3 +1,13 @@
+<a name="0.8.6"></a>
+## [0.8.6](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/compare/v0.8.5...v0.8.6) (2017-03-16)
+
+
+### Bug Fixes
+
+* add permission for bulk.batch.process to checker ([479c118](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/commit/479c118))
+
+
+
 <a name="0.8.5"></a>
 ## [0.8.5](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/compare/v0.8.4...v0.8.5) (2017-03-16)
 
