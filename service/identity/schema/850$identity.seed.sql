@@ -30,6 +30,7 @@ VALUES
   ('bulk.batch.check', 'Chech batch'),
   ('bulk.batch.ready', 'Mark batch as ready'),
   ('bulk.batch.delete', 'Mark batch as deleted'),
+  ('bulk.batch.process', 'Process batch'),
   -- payment
   ('bulk.payment.check', 'Check payment'),
   ('bulk.payment.disable', 'Disable payment'),
@@ -119,6 +120,7 @@ WHERE
         'bulk.batch.check',
         'bulk.batch.fetch',
         'bulk.batch.get',
+        'bulk.batch.process',
         'bulk.payment.fetch',
         'bulk.payment.check',
         'bulk.payment.disable',
