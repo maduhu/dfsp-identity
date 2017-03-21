@@ -1,3 +1,13 @@
+<a name="0.8.7"></a>
+## [0.8.7](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/compare/v0.8.6...v0.8.7) (2017-03-21)
+
+
+### Bug Fixes
+
+* reuse code and isolate hashing logic by moving the hash generating in its own function ([530c987](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/commit/530c987))
+
+
+
 <a name="0.8.6"></a>
 ## [0.8.6](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/compare/v0.8.5...v0.8.6) (2017-03-16)
 
