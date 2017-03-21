@@ -14,6 +14,13 @@ function checkPermission (permissions, action) {
     return permission.actionId.replace('%', '(.+?)')
   }).join('|')).test(action)
 }
+function genHash (value, hParams) {
+  return new Promise(function (resolve, reject) {
+    crypto.pbkdf2(value, hParams.salt, hParams.iterations, hParams.keylen, hParams.digest, function (err, key) {
+      return err ? reject(err) : resolve(key.toString('hex'))
+    })
+  })
+}
 
 module.exports = {
   schema: [{
@@ -68,57 +75,55 @@ module.exports = {
         'permission.get': ['*']
       }
     } else {
-      return new Promise((resolve, reject) => {
-        if (msg.password == null) {
-          resolve(msg)
-        } else {
-          crypto.pbkdf2(msg.password, hParams.salt, hParams.iterations, hParams.keylen, hParams.digest, (err, key) => {
-            if (err) {
-              throw err
-            }
-            msg.password = key.toString('hex')
-            resolve(msg)
+      var promise
+      if (msg.password == null) {
+        promise = Promise.resolve(msg)
+      } else {
+        promise = genHash(msg.password, hParams)
+          .then(function (result) {
+            msg.password = result
+            return msg
           })
-        }
-      }).then((msg) => {
-        return this.super['identity.check'](msg, $meta)
-          .then((result) => {
-            if (msg.actionId && !checkPermission(result['permission.get'], msg.actionId)) {
-              throw error.securityViolation()
-            }
-            return this.bus.importMethod('directory.user.get')({
-              actorId: result['identity.check'].actorId
+      }
+      return promise
+        .then((msg) => {
+          return this.super['identity.check'](msg, $meta)
+            .then((result) => {
+              if (msg.actionId && !checkPermission(result['permission.get'], msg.actionId)) {
+                throw error.securityViolation()
+              }
+              return this.bus.importMethod('directory.user.get')({
+                actorId: result['identity.check'].actorId
+              })
+              .then((person) => {
+                result.person = person
+                result.emails = []
+                return result
+              })
             })
-            .then((person) => {
-              result.person = person
-              result.emails = []
-              return result
-            })
-          })
-      })
+        })
     }
   },
   add: function (msg, $meta) {
-    return new Promise((resolve, reject) => {
-      if (msg.hash == null || msg.hash.password == null) {
-        msg.hash.params = ''
-        msg.hash.algorithm = ''
-        msg.hash.value = ''
-        resolve(msg)
-      } else {
-        crypto.pbkdf2(msg.hash.password, hParams.salt, hParams.iterations, hParams.keylen, hParams.digest, (err, key) => {
-          if (err) {
-            throw err
-          }
+    var promise
+    if (msg.hash == null || msg.hash.password == null) {
+      msg.hash.params = ''
+      msg.hash.algorithm = ''
+      msg.hash.value = ''
+      promise = Promise.resolve(msg)
+    } else {
+      promise = genHash(msg.hash.password, hParams)
+        .then(function (result) {
           msg.hash.params = JSON.stringify(hParams)
           msg.hash.algorithm = 'pbkdf2'
-          msg.hash.value = key.toString('hex')
-          resolve(msg)
+          msg.hash.value = result
+          return msg
         })
-      }
-    }).then((msg) => {
-      return this.super['identity.add'](msg, $meta)
-    })
+    }
+    return promise
+      .then((msg) => {
+        return this.super['identity.add'](msg, $meta)
+      })
   },
   closeSession: function (msg, $meta) {
     return this.super['identity.closeSession'](msg, $meta)
