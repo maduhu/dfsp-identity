@@ -92,14 +92,7 @@ module.exports = {
               if (msg.actionId && !checkPermission(result['permission.get'], msg.actionId)) {
                 throw error.securityViolation()
               }
-              return this.bus.importMethod('directory.user.get')({
-                actorId: result['identity.check'].actorId
-              })
-              .then((person) => {
-                result.person = person
-                result.emails = []
-                return result
-              })
+              return result
             })
         })
     }

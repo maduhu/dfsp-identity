@@ -13,7 +13,8 @@ module.exports = {
       actorId: joi.string(),
       channel: joi.string(),
       iat: joi.number(),
-      actionId: joi.string()
+      actionId: joi.string(),
+      ip: joi.string()
     })
       .or('username', 'actionId', 'sessionId')
       .with('password', 'username')
