@@ -1,3 +1,13 @@
+<a name="0.8.9"></a>
+## [0.8.9](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/compare/v0.8.8...v0.8.9) (2017-04-03)
+
+
+### Bug Fixes
+
+* move call to directory in the api ([ecf167e](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/commit/ecf167e))
+
+
+
 <a name="0.8.8"></a>
 ## [0.8.8](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/compare/v0.8.7...v0.8.8) (2017-04-03)
 
