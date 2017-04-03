@@ -79,7 +79,7 @@ $body$
         DELETE FROM
           identity."actorRole"
         WHERE
-          "actorId" = "@actorId";
+          "actorId" = "@actorId" AND "roleId" IN (SELECT ir."roleId" FROM identity."role" ir WHERE ir."name" IN ('maker', 'checker', 'common'));
         -- insert roles again for the user
         INSERT INTO
           identity."actorRole" ("actorId", "roleId")

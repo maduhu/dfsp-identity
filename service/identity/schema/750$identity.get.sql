@@ -3,6 +3,7 @@
   "@type" varchar(200)
 ) RETURNS TABLE (
   "hashParams" json,
+  "roles" json,
   "isSingleResult" boolean
 )
 AS
@@ -22,9 +23,26 @@ $body$
         h."actorId" = u."actorId" AND
         ("@type" IS NULL OR  h.type = "@type") AND
         h."isEnabled" = true
+    ),
+    q2 AS (
+      SELECT
+        r.*
+      FROM
+        identity."actorRole" ar
+      JOIN
+        identity.role r
+      on ar."roleId" = r."roleId"
+      WHERE
+        ar."actorId" = (
+                          SELECT DISTINCT
+                            q1."actorId"
+                          FROM
+                            q1
+                       )
     )
   SELECT
     (SELECT json_agg(q1) FROM q1) AS "hashParams",
+    (SELECT json_agg(q2) FROM q2) AS "roles",
     true "isSingleResult"
 $body$
 LANGUAGE SQL

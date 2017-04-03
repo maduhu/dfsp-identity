@@ -4,7 +4,8 @@
   "@hash.identifier" varchar(200),
   "@hash.algorithm" varchar(50),
   "@hash.params" text,
-  "@hash.value" text
+  "@hash.value" text,
+  "@roles" varchar(10)[] -- array of role names
 ) RETURNS TABLE (
   "actor" json,
   "isSingleResult" boolean
@@ -15,6 +16,16 @@ $body$
     identity.hash("actorId", "type", "identifier", "algorithm", "params", "value", "isEnabled")
   VALUES
     ("@hash.actorId", "@hash.type", "@hash.identifier", "@hash.algorithm", "@hash.params", "@hash.value", true);
+
+  INSERT INTO identity."actorRole"(
+    "actorId",
+    "roleId"
+  )
+  SELECT
+    "@hash.actorId",
+    ir."roleId"
+  FROM
+    identity."role" ir WHERE ir."name" IN (SELECT unnest("@roles"));
 
   WITH
     q1 AS (

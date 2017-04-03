@@ -38,7 +38,8 @@ module.exports = {
       type: joi.string()
     }),
     result: joi.object({
-      'hashParams': joi.any()
+      'hashParams': joi.any(),
+      'roles': joi.array()
     })
   },
   add: {
@@ -50,6 +51,12 @@ module.exports = {
   closeSession: {
     auth: false,
     description: '',
+    params: joi.any(),
+    result: joi.any()
+  },
+  'role.fetch': {
+    auth: false,
+    description: 'Fetch roles',
     params: joi.any(),
     result: joi.any()
   }
