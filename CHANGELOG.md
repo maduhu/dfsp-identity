@@ -1,3 +1,14 @@
+<a name="0.8.10"></a>
+## [0.8.10](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/compare/v0.8.9...v0.8.10) (2017-04-03)
+
+
+### Bug Fixes
+
+* add customer/merchant/agent roles ([3385e8b](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/commit/3385e8b))
+* user role names instead of role IDs when adding identity ([e378388](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/commit/e378388))
+
+
+
 <a name="0.8.9"></a>
 ## [0.8.9](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/compare/v0.8.8...v0.8.9) (2017-04-03)
 
