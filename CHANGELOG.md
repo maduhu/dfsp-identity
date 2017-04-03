@@ -1,3 +1,13 @@
+<a name="0.8.8"></a>
+## [0.8.8](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/compare/v0.8.7...v0.8.8) (2017-04-03)
+
+
+### Bug Fixes
+
+* update ut-port-httpserver ([5510888](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/commit/5510888))
+
+
+
 <a name="0.8.7"></a>
 ## [0.8.7](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/compare/v0.8.6...v0.8.7) (2017-03-21)
 
