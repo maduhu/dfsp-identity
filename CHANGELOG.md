@@ -1,3 +1,15 @@
+<a name="0.8.11"></a>
+## [0.8.11](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/compare/v0.8.10...v0.8.11) (2017-04-04)
+
+
+### Bug Fixes
+
+* add basix test structure ([359d684](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/commit/359d684))
+* add more tests ([140d021](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/commit/140d021))
+* add more tests related to the identity.check procedure ([56bc8a5](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/commit/56bc8a5))
+
+
+
 <a name="0.8.10"></a>
 ## [0.8.10](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/compare/v0.8.9...v0.8.10) (2017-04-03)
 
