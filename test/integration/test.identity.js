@@ -1,13 +1,13 @@
 var test = require('ut-run/test')
 var config = require('./../lib/appConfig')
-var uuid = require('uuid/v4')
 
-const ACCOUNT_ACTOR_ID_1 = uuid().slice(0, 10)
-const ACCOUNT_ACTOR_ID_2 = uuid().slice(0, 10)
-const IDENTIFIER_1 = uuid().slice(0, 20)
-const IDENTIFIER_2 = uuid().slice(0, 20)
-const PASSWORD_1 = uuid().slice(0, 20)
-const PASSWORD_2 = uuid().slice(0, 20)
+const TIMESTAMP = (new Date()).getTime()
+const ACCOUNT_ACTOR_ID_1 = 'ActorId_1_' + TIMESTAMP
+const ACCOUNT_ACTOR_ID_2 = 'ActorId_2_' + TIMESTAMP
+const IDENTIFIER_1 = 'Identifier_1_' + TIMESTAMP
+const IDENTIFIER_2 = 'Identifier_2_' + TIMESTAMP
+const PASSWORD_1 = 'pass_1_' + TIMESTAMP
+const PASSWORD_2 = 'pass_2_' + TIMESTAMP
 
 test({
   type: 'integration',
@@ -37,7 +37,7 @@ test({
             {
               actor: [{ 'actorId': ACCOUNT_ACTOR_ID_1 }]
             },
-            'hash 1 successfully added'
+            'hash #1 successfully added'
           )
         }
       },
@@ -60,7 +60,7 @@ test({
             {
               actor: [{ 'actorId': ACCOUNT_ACTOR_ID_2 }]
             },
-            'hash 1 successfully added'
+            'hash #2 successfully added'
           )
         }
       },
@@ -71,16 +71,11 @@ test({
           return {
             actorId: ACCOUNT_ACTOR_ID_1,
             username: IDENTIFIER_1,
-            password: PASSWORD_1,
+            password: PASSWORD_1
           }
         },
         result: (result, assert) => {
-          assert.deepEquals(
-            result,
-            {
-            },
-            'identity checked successfully'
-          )
+
         }
       }
     ])
