@@ -1,5 +1,6 @@
 var test = require('ut-run/test')
 var config = require('./../lib/appConfig')
+var joi = require('joi')
 
 const TIMESTAMP = (new Date()).getTime()
 const ACCOUNT_ACTOR_ID_1 = 'ActorId_1_' + TIMESTAMP
@@ -75,7 +76,27 @@ test({
           }
         },
         result: (result, assert) => {
+          assert.equals(joi.validate(result['identity.check'], joi.object().keys({
+            actorId: joi.string(),
+            sessionId: joi.string().guid()
+          })).error, null, 'Validate identity.check object')
 
+          assert.equals(joi.validate(result['permission.get'], joi.array().items({
+            actionId: joi.string(),
+            objectId: joi.string(),
+            description: joi.string()
+          })).error, null, 'Validate permission.get object')
+
+          assert.equals(joi.validate(result['language'], joi.object().keys({
+            iso2Code: joi.string()
+          })).error, null, 'Validate language object')
+
+          assert.equals(joi.validate(result['localisation'], joi.object().keys({
+            dateFormat: joi.string(),
+            numberFormat: joi.string().allow([null, ''])
+          })).error, null, 'Validate localisation object')
+
+          assert.equals(result['roles'][0], 'common', 'Check that common role is assigned')
         }
       }
     ])
