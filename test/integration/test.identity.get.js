@@ -15,8 +15,6 @@ const KEYLEN = 512
 const DIGEST = 'sha512'
 const ALGORITHM = 'pbkdf2'
 const PASSWORD_TYPE = 'password'
-const PUBLIC_ROLES = ['customer', 'merchant', 'agent']
-const NOT_PUBLIC_ROLES = ['common', 'maker', 'checker']
 
 test({
   type: 'integration',
@@ -37,8 +35,7 @@ test({
               type: 'password',
               identifier: IDENTIFIER_1,
               password: PASSWORD_1
-            },
-            roles: PUBLIC_ROLES
+            }
           }
         },
         result: (result, assert) => {
@@ -62,16 +59,6 @@ test({
         },
         result: (result, assert) => {
           let hashParams = result.hashParams
-          let roles = result.roles
-
-          roles.forEach((role) => {
-            assert.true(typeof role.roleId === 'number', 'Check roleId type')
-            assert.true(typeof role.name === 'string', 'Check role name type')
-            assert.true(typeof role.description === 'string', 'Check role description type')
-            assert.true(typeof role.isPublic === 'boolean', 'Check role isPublic type')
-            assert.equal(role.isPublic, true, 'Check role isPublic value for ' + role.name)
-            assert.true(PUBLIC_ROLES.indexOf(role.name) > -1, 'Check that returned roles are public')
-          })
 
           assert.equal(hashParams[0].actorId, ACCOUNT_ACTOR_ID_1, 'Check returned actorId')
           assert.equal(hashParams[0].algorithm, ALGORITHM, 'Check returned algorithm')
@@ -98,8 +85,7 @@ test({
               type: 'password',
               identifier: IDENTIFIER_2,
               password: PASSWORD_2
-            },
-            roles: NOT_PUBLIC_ROLES
+            }
           }
         },
         result: (result, assert) => {
@@ -123,16 +109,6 @@ test({
         },
         result: (result, assert) => {
           let hashParams = result.hashParams
-          let roles = result.roles
-
-          roles.forEach((role) => {
-            assert.true(typeof role.roleId === 'number', 'Check roleId type')
-            assert.true(typeof role.name === 'string', 'Check role name type')
-            assert.true(typeof role.description === 'string', 'Check role description type')
-            assert.true(typeof role.isPublic === 'boolean', 'Check role isPublic type')
-            assert.equal(role.isPublic, false, 'Check role isPublic value for ' + role.name)
-            assert.true(NOT_PUBLIC_ROLES.indexOf(role.name) > -1, 'Check that returned roles are not public')
-          })
 
           assert.equal(hashParams[0].actorId, ACCOUNT_ACTOR_ID_2, 'Check returned actorId')
           assert.equal(hashParams[0].algorithm, ALGORITHM, 'Check returned algorithm')
