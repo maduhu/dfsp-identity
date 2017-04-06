@@ -53,15 +53,12 @@ ON CONFLICT ("name") DO UPDATE SET "description" = EXCLUDED.description;
 
 -- insert roles
 INSERT INTO
-   identity."role" ("name", "description", "isPublic")
+   identity."role" ("name", "description")
 VALUES
-  ('common', 'Default role', 'false'),
-  ('maker', 'Batch payment maker role', 'false'),
-  ('checker', 'Batch payment checker role', 'false'),
-  ('customer', 'USSD customer role', 'true'),
-  ('merchant', 'USSD merchant role', 'true'),
-  ('agent', 'USSD agent role', 'true')
-ON CONFLICT ("name") DO UPDATE SET "description" = EXCLUDED.description, "isPublic" = EXCLUDED."isPublic";
+  ('common', 'Default role'),
+  ('maker', 'Batch payment maker role'),
+  ('checker', 'Batch payment checker role')
+ON CONFLICT ("name") DO UPDATE SET "description" = EXCLUDED.description;
 
 INSERT INTO
    identity."roleAction" ("roleId", "actionId")
