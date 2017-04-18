@@ -39,7 +39,7 @@ module.exports = {
     }),
     result: joi.object({
       'hashParams': joi.any(),
-      'roles': joi.array()
+      'roles': joi.any().allow(null)
     })
   },
   add: {

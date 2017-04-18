@@ -1,19 +1,18 @@
 ﻿CREATE OR REPLACE FUNCTION identity."role.fetch"(
-  "@isPublic" boolean
+
 ) RETURNS TABLE (
   "roleId" INTEGER,
-  "name" VARCHAR(10)
+  "name" VARCHAR(10),
+  "description" VARCHAR(50)
 )
 AS
 $body$
 BEGIN
   RETURN QUERY
   SELECT
-    r."roleId", r."name"
+    r."roleId", r."name", r."description"
   FROM
-     identity."role" r
-  WHERE
-    ("@isPublic" IS NULL OR r."isPublic" = "@isPublic");
+     identity."role" r;
 END;
 $body$
 LANGUAGE 'plpgsql';
