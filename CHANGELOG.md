@@ -1,3 +1,19 @@
+<a name="0.9.0"></a>
+# [0.9.0](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/compare/v0.8.11...v0.9.0) (2017-04-18)
+
+
+### Bug Fixes
+
+* integration tests - remove test for public/private roles ([d3b1421](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/commit/d3b1421))
+* remove account roles from identity roles ([34ce9a7](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/commit/34ce9a7))
+
+
+### Features
+
+* version bump for identity roles ([c0e1770](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/commit/c0e1770))
+
+
+
 <a name="0.8.11"></a>
 ## [0.8.11](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/compare/v0.8.10...v0.8.11) (2017-04-04)
 
