@@ -1,3 +1,15 @@
+<a name="0.9.2"></a>
+## [0.9.2](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/compare/v0.9.1...v0.9.2) (2017-04-24)
+
+
+### Bug Fixes
+
+* add shrinkwrap ([790915c](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/commit/790915c))
+* shrinkwrap private nexus links ([990d098](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/commit/990d098))
+* tests with new version of ut-run ([99aae9b](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/commit/99aae9b))
+
+
+
 <a name="0.9.1"></a>
 ## [0.9.1](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/compare/v0.9.0...v0.9.1) (2017-04-20)
 
