@@ -34,9 +34,13 @@ module.exports = {
     auth: false,
     description: 'Get hash params and actorId',
     params: joi.object({
-      username: joi.string().required(),
+      username: joi.string(),
+      actorId: joi.string(),
       type: joi.string()
-    }),
+    })
+    .or('username', 'actorId')
+    .with('username', 'type')
+    .with('actorId', 'type'),
     result: joi.object({
       'hashParams': joi.any(),
       'roles': joi.any().allow(null)
