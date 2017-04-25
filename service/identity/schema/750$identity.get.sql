@@ -12,7 +12,7 @@ $body$
 DECLARE
         "@hashParams" json;
         "@roles" json;
-BEGINx
+BEGIN
   IF ("@type" IS NULL) THEN
     RAISE EXCEPTION 'identity.typeIsMissing';
   END IF;
