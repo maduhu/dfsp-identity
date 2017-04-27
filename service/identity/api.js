@@ -38,7 +38,7 @@ module.exports = {
       actorId: joi.string(),
       type: joi.string()
     })
-    .or('username', 'actorId')
+    .xor('username', 'actorId')
     .with('username', 'type')
     .with('actorId', 'type'),
     result: joi.object({

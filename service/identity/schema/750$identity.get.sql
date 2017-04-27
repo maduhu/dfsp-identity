@@ -14,7 +14,7 @@ DECLARE
         "@roles" json;
 BEGIN
   IF ("@type" IS NULL) THEN
-    RAISE EXCEPTION 'identity.typeIsMissing';
+    RAISE EXCEPTION 'identity.typeMissing';
   END IF;
 
   WITH
@@ -27,7 +27,7 @@ BEGIN
     FROM
       identity.hash h
     WHERE
-      ("@type" IS NULL OR  h.type = "@type") AND
+      h.type = "@type" AND
       ("@actorId" IS NULL OR  h."actorId" = "@actorId") AND
       ("@username" IS NULL OR  h.identifier = "@username") AND
       h."isEnabled" = true
