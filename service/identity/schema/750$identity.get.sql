@@ -1,5 +1,6 @@
 ﻿CREATE OR REPLACE FUNCTION identity."get"(
   "@username" varchar(200),
+  "@actorId" varchar(25),
   "@type" varchar(200)
 ) RETURNS TABLE (
   "hashParams" json,
@@ -8,21 +9,28 @@
 )
 AS
 $body$
+DECLARE
+        "@hashParams" json;
+        "@roles" json;
+BEGIN
+  IF ("@type" IS NULL) THEN
+    RAISE EXCEPTION 'identity.typeMissing';
+  END IF;
+
   WITH
     q1 AS (
-      SELECT
-        h.params,
-        h.algorithm,
-        h."actorId",
-        h.type
-      FROM
-        identity.hash h
-      JOIN
-        identity.hash u ON u.identifier="@username" AND u.type IN ('password', 'registerPassword')
-      WHERE
-        h."actorId" = u."actorId" AND
-        ("@type" IS NULL OR  h.type = "@type") AND
-        h."isEnabled" = true
+    SELECT
+      h.params,
+      h.algorithm,
+      h."actorId",
+      h.type
+    FROM
+      identity.hash h
+    WHERE
+      h.type = "@type" AND
+      ("@actorId" IS NULL OR  h."actorId" = "@actorId") AND
+      ("@username" IS NULL OR  h.identifier = "@username") AND
+      h."isEnabled" = true
     ),
     q2 AS (
       SELECT
@@ -40,9 +48,19 @@ $body$
                             q1
                        )
     )
+
+    SELECT
+      (SELECT json_agg(q1) FROM q1) AS "hashParams",
+      (SELECT json_agg(q2) FROM q2) AS "roles"
+    INTO
+      "@hashParams",
+      "@roles";
+
+RETURN QUERY
   SELECT
-    (SELECT json_agg(q1) FROM q1) AS "hashParams",
-    (SELECT json_agg(q2) FROM q2) AS "roles",
-    true "isSingleResult"
+    "@hashParams" AS "hashParams",
+    "@roles" AS "roles",
+    true "isSingleResult";
+END;
 $body$
-LANGUAGE SQL
+LANGUAGE 'plpgsql';
