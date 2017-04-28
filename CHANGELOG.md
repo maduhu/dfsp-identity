@@ -1,3 +1,15 @@
+<a name="0.9.3"></a>
+## [0.9.3](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/compare/v0.9.2...v0.9.3) (2017-04-28)
+
+
+### Bug Fixes
+
+* fix typo ([3098e33](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/commit/3098e33))
+* refactor identity.get and api validations ([8503388](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/commit/8503388))
+* remove check for [@type](https://github.com/type) params ([0157a4f](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/commit/0157a4f))
+
+
+
 <a name="0.9.2"></a>
 ## [0.9.2](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/compare/v0.9.1...v0.9.2) (2017-04-24)
 
