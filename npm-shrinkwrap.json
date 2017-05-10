@@ -1,6 +1,6 @@
 {
   "name": "@leveloneproject/dfsp-identity",
-  "version": "0.9.3",
+  "version": "0.9.4",
   "dependencies": {
     "abstract-leveldown": {
       "version": "2.6.1",
