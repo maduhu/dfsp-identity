@@ -1,3 +1,13 @@
+<a name="0.9.5"></a>
+## [0.9.5](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/compare/v0.9.4...v0.9.5) (2017-05-10)
+
+
+### Bug Fixes
+
+* change logmode to long ([55c0eff](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/commit/55c0eff))
+
+
+
 <a name="0.9.4"></a>
 ## [0.9.4](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/compare/v0.9.3...v0.9.4) (2017-05-10)
 
