@@ -43,7 +43,8 @@
     "ut-port-http": "^6.4.1",
     "ut-port-jsonrpc": "^5.6.4",
     "ut-run": "^8.1.0",
-    "pm2": "2.0.18"
+    "pm2": "2.0.18",
+    "ut-log-dfsp": "^5.0.1"
   },
   "devDependencies": {
     "blue-tape": "1.0.0",
