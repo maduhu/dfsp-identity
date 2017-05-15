@@ -1,3 +1,13 @@
+<a name="0.9.6"></a>
+## [0.9.6](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/compare/v0.9.5...v0.9.6) (2017-05-15)
+
+
+### Bug Fixes
+
+* elk ([5511174](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/commit/5511174))
+
+
+
 <a name="0.9.5"></a>
 ## [0.9.5](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/compare/v0.9.4...v0.9.5) (2017-05-10)
 
