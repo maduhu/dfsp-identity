@@ -1,3 +1,13 @@
+<a name="0.9.7"></a>
+## [0.9.7](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/compare/v0.9.6...v0.9.7) (2017-05-19)
+
+
+### Bug Fixes
+
+* change date format to iso8601 ([0fba1da](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/commit/0fba1da))
+
+
+
 <a name="0.9.6"></a>
 ## [0.9.6](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/compare/v0.9.5...v0.9.6) (2017-05-15)
 
