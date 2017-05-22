@@ -1,3 +1,13 @@
+<a name="0.9.9"></a>
+## [0.9.9](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/compare/v0.9.8...v0.9.9) (2017-05-22)
+
+
+### Bug Fixes
+
+* log configuration ([ebb155c](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/commit/ebb155c))
+
+
+
 <a name="0.9.8"></a>
 ## [0.9.8](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/compare/v0.9.7...v0.9.8) (2017-05-19)
 
