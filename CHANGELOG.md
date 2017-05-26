@@ -1,3 +1,14 @@
+<a name="0.9.10"></a>
+## [0.9.10](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/compare/v0.9.9...v0.9.10) (2017-05-26)
+
+
+### Bug Fixes
+
+* remove shrinkwrap and add it to circleci pipeline ([426cdf5](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/commit/426cdf5))
+* update dependencies ([f84b5a7](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/commit/f84b5a7))
+
+
+
 <a name="0.9.9"></a>
 ## [0.9.9](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/compare/v0.9.8...v0.9.9) (2017-05-22)
 
