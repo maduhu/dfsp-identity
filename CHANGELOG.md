@@ -1,3 +1,14 @@
+<a name="0.9.11"></a>
+## [0.9.11](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/compare/v0.9.10...v0.9.11) (2017-05-26)
+
+
+### Bug Fixes
+
+* remove shrinkwrap ([a5568fd](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/commit/a5568fd))
+* update pipeline ([3ea9ff0](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/commit/3ea9ff0))
+
+
+
 <a name="0.9.10"></a>
 ## [0.9.10](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/compare/v0.9.9...v0.9.10) (2017-05-26)
 
