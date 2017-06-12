@@ -1,3 +1,13 @@
+<a name="0.9.13"></a>
+## [0.9.13](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/compare/v0.9.12...v0.9.13) (2017-06-12)
+
+
+### Bug Fixes
+
+* update dependencies ([d276678](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/commit/d276678))
+
+
+
 <a name="0.9.12"></a>
 ## [0.9.12](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/compare/v0.9.11...v0.9.12) (2017-06-02)
 
