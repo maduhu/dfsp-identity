@@ -6,11 +6,6 @@ module.exports = {
   api: ['identity'],
   imports: ['identity.start'],
   port: 8012,
-  allowXFF: true,
-  disableXsrf: {
-    http: true,
-    ws: true
-  },
   bundle: 'identity',
   dist: path.resolve(__dirname, '../dist'),
   routes: {

@@ -14,11 +14,7 @@ module.exports = {
       channel: joi.string(),
       iat: joi.number(),
       actionId: joi.string(),
-      ip: joi.string(),
-      // params needed for ut-port-httpserver ^8.11.0
-      xsrfToken: joi.any().optional(),
-      scopes: joi.any().optional(),
-      exp: joi.any().optional()
+      ip: joi.string()
     })
       .or('username', 'actionId', 'sessionId')
       .with('password', 'username')
