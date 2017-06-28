@@ -1,3 +1,13 @@
+<a name="0.9.17"></a>
+## [0.9.17](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/compare/v0.9.16...v0.9.17) (2017-06-28)
+
+
+### Bug Fixes
+
+* add notification permissions ([1cbb737](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/commit/1cbb737))
+
+
+
 <a name="0.9.16"></a>
 ## [0.9.16](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/compare/v0.9.15...v0.9.16) (2017-06-28)
 
