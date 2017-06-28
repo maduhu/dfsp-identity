@@ -1,3 +1,14 @@
+<a name="0.9.16"></a>
+## [0.9.16](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/compare/v0.9.15...v0.9.16) (2017-06-28)
+
+
+### Bug Fixes
+
+* update ut-bus and ut-port-httpserver ([8c3acc9](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/commit/8c3acc9))
+* ut-bus version ([d800551](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/commit/d800551))
+
+
+
 <a name="0.9.15"></a>
 ## [0.9.15](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/compare/v0.9.14...v0.9.15) (2017-06-20)
 
