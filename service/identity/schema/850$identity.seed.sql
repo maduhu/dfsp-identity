@@ -48,7 +48,22 @@ VALUES
   ('rule.rule.add', 'Rule add'),
   ('rule.rule.edit', 'Rule edit'),
   -- ledger
-  ('ledger.account.fetch', 'Fetch accounts')
+  ('ledger.account.fetch', 'Fetch accounts'),
+  -- notifications
+  ('notification.channel.fetch', 'Fetch channels'),
+  ('notification.channel.get', 'Get channel'),
+  ('notification.notification.add', 'Add notification'),
+  ('notification.notification.edit', 'Edit notification'),
+  ('notification.notification.fetch', 'Fetch notifications'),
+  ('notification.operation.fetch', 'Fetch operations'),
+  ('notification.operation.get', 'Get operation'),
+  ('notification.status.fetch', 'Fetch statuses'),
+  ('notification.status.get', 'Get status'),
+  ('notification.target.fetch', 'Fetch targets'),
+  ('notification.target.get', 'Get target'),
+  ('notification.template.add', 'Add template'),
+  ('notification.template.fetch', 'Fetch templates'),
+  ('notification.template.get', 'Get template')
 ON CONFLICT ("name") DO UPDATE SET "description" = EXCLUDED.description;
 
 -- insert roles
@@ -73,7 +88,21 @@ WHERE
         'rule.rule.fetch',
         'rule.item.fetch',
         'rule.rule.add',
-        'rule.rule.edit'
+        'rule.rule.edit',
+        'notification.channel.fetch',
+        'notification.channel.get',
+        'notification.notification.add',
+        'notification.notification.edit',
+        'notification.notification.fetch',
+        'notification.operation.fetch',
+        'notification.operation.get',
+        'notification.status.fetch',
+        'notification.status.get',
+        'notification.target.fetch',
+        'notification.target.get',
+        'notification.template.add',
+        'notification.template.fetch',
+        'notification.template.get'
     )
 ON CONFLICT DO NOTHING;
 
