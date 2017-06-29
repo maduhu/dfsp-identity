@@ -1,3 +1,13 @@
+<a name="0.9.18"></a>
+## [0.9.18](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/compare/v0.9.17...v0.9.18) (2017-06-29)
+
+
+### Bug Fixes
+
+* change pbkdf2 iterrations number from 100000 to 10000 ([e0df71d](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/commit/e0df71d))
+
+
+
 <a name="0.9.17"></a>
 ## [0.9.17](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/compare/v0.9.16...v0.9.17) (2017-06-28)
 
