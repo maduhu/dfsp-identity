@@ -98,6 +98,46 @@ test({
 
           assert.equals(result['roles'][0], 'common', 'Check that common role is assigned')
         }
+      },
+      {
+        name: 'Test check - negative',
+        method: 'identity.check',
+        params: (context) => {
+          return {
+            username: IDENTIFIER_1,
+            password: PASSWORD_1,
+            actionId: '11'
+          }
+        },
+        error: (error, assert) => {
+          assert.equals(error.errorPrint, 'Security violation', 'Check security violation error')
+        }
+      },
+      {
+        name: 'Identity check - permissions get',
+        method: 'identity.check',
+        params: (context) => {
+          return {
+            actionId: 'identity.get'
+          }
+        },
+        result: (result, assert) => {
+          assert.equals(joi.validate(result, joi.object().keys({
+            'permission.get': joi.array()
+          })).error, null, 'Validate permission.get[*]')
+        }
+      },
+      {
+        name: 'Identity close session',
+        method: 'identity.closeSession',
+        params: (context) => {
+          return {
+            actionId: 'identity.get'
+          }
+        },
+        result: (result, assert) => {
+          assert.true(result.length === 0, 'Check that the session is closed')
+        }
       }
     ])
   }
