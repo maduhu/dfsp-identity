@@ -90,7 +90,7 @@ module.exports = {
           return this.super['identity.check'](msg, $meta)
             .then((result) => {
               if (msg.actionId && !checkPermission(result['permission.get'], msg.actionId)) {
-                throw error.securityViolation()
+                throw error['user.securityViolation']()
               }
               return result
             })
