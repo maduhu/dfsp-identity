@@ -5,8 +5,10 @@ var joi = require('joi')
 const TIMESTAMP = (new Date()).getTime()
 const ACCOUNT_ACTOR_ID_1 = 'ActorId_1_' + TIMESTAMP
 const ACCOUNT_ACTOR_ID_2 = 'ActorId_2_' + TIMESTAMP
+const ACCOUNT_ACTOR_ID_NEGATIVE = 'ActorId-' + TIMESTAMP
 const IDENTIFIER_1 = 'Identifier_1_' + TIMESTAMP
 const IDENTIFIER_2 = 'Identifier_2_' + TIMESTAMP
+const IDENTIFIER_NEGATIVE = 'Id-' + TIMESTAMP
 const PASSWORD_1 = 'pass_1_' + TIMESTAMP
 const PASSWORD_2 = 'pass_2_' + TIMESTAMP
 
@@ -63,6 +65,24 @@ test({
             },
             'hash #2 successfully added'
           )
+        }
+      },
+      {
+        name: 'Add hash - missing password',
+        method: 'identity.add',
+        params: (context) => {
+          return {
+            hash: {
+              actorId: ACCOUNT_ACTOR_ID_NEGATIVE,
+              type: 'password',
+              identifier: IDENTIFIER_NEGATIVE
+            }
+          }
+        },
+        result: (result, assert) => {
+          assert.equals(joi.validate(result.actor, joi.array().items({
+            actorId: joi.string()
+          })).error, null, 'Validate identity.add object - missing password')
         }
       },
       {
