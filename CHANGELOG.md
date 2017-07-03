@@ -1,3 +1,13 @@
+<a name="0.9.19"></a>
+## [0.9.19](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/compare/v0.9.18...v0.9.19) (2017-07-03)
+
+
+### Bug Fixes
+
+* rework throwing erros in identity.ckeck ([36ace45](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/commit/36ace45))
+
+
+
 <a name="0.9.18"></a>
 ## [0.9.18](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/compare/v0.9.17...v0.9.18) (2017-06-29)
 
