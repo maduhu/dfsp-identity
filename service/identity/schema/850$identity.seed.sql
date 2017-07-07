@@ -62,6 +62,7 @@ VALUES
   ('notification.target.fetch', 'Fetch targets'),
   ('notification.target.get', 'Get target'),
   ('notification.template.add', 'Add template'),
+  ('notification.template.edit', 'Edit template'),
   ('notification.template.fetch', 'Fetch templates'),
   ('notification.template.get', 'Get template')
 ON CONFLICT ("name") DO UPDATE SET "description" = EXCLUDED.description;
@@ -101,6 +102,7 @@ WHERE
         'notification.target.fetch',
         'notification.target.get',
         'notification.template.add',
+        'notification.template.edit',
         'notification.template.fetch',
         'notification.template.get'
     )
