@@ -5,8 +5,10 @@ var joi = require('joi')
 const TIMESTAMP = (new Date()).getTime()
 const ACCOUNT_ACTOR_ID_1 = 'ActorId_1_' + TIMESTAMP
 const ACCOUNT_ACTOR_ID_2 = 'ActorId_2_' + TIMESTAMP
+const ACCOUNT_ACTOR_ID_NEGATIVE = 'ActorId-' + TIMESTAMP
 const IDENTIFIER_1 = 'Identifier_1_' + TIMESTAMP
 const IDENTIFIER_2 = 'Identifier_2_' + TIMESTAMP
+const IDENTIFIER_NEGATIVE = 'Id-' + TIMESTAMP
 const PASSWORD_1 = 'pass_1_' + TIMESTAMP
 const PASSWORD_2 = 'pass_2_' + TIMESTAMP
 
@@ -66,6 +68,24 @@ test({
         }
       },
       {
+        name: 'Add hash - missing password',
+        method: 'identity.add',
+        params: (context) => {
+          return {
+            hash: {
+              actorId: ACCOUNT_ACTOR_ID_NEGATIVE,
+              type: 'password',
+              identifier: IDENTIFIER_NEGATIVE
+            }
+          }
+        },
+        result: (result, assert) => {
+          assert.equals(joi.validate(result.actor, joi.array().items({
+            actorId: joi.string()
+          })).error, null, 'Validate identity.add object - missing password')
+        }
+      },
+      {
         name: 'Test check',
         method: 'identity.check',
         params: (context) => {
@@ -97,6 +117,46 @@ test({
           })).error, null, 'Validate localisation object')
 
           assert.equals(result['roles'][0], 'common', 'Check that common role is assigned')
+        }
+      },
+      {
+        name: 'Test check - negative',
+        method: 'identity.check',
+        params: (context) => {
+          return {
+            username: IDENTIFIER_1,
+            password: PASSWORD_1,
+            actionId: '11'
+          }
+        },
+        error: (error, assert) => {
+          assert.equals(error.errorPrint, 'Security violation', 'Check security violation error')
+        }
+      },
+      {
+        name: 'Identity check - permissions get',
+        method: 'identity.check',
+        params: (context) => {
+          return {
+            actionId: 'identity.get'
+          }
+        },
+        result: (result, assert) => {
+          assert.equals(joi.validate(result, joi.object().keys({
+            'permission.get': joi.array()
+          })).error, null, 'Validate permission.get[*]')
+        }
+      },
+      {
+        name: 'Identity close session',
+        method: 'identity.closeSession',
+        params: (context) => {
+          return {
+            actionId: 'identity.get'
+          }
+        },
+        result: (result, assert) => {
+          assert.true(result.length === 0, 'Check that the session is closed')
         }
       }
     ])
