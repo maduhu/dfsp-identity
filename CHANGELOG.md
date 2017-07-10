@@ -1,3 +1,13 @@
+<a name="0.10.0"></a>
+# [0.10.0](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/compare/v0.9.20...v0.10.0) (2017-07-10)
+
+
+### Features
+
+* add permission for notification.template.edit ([39fb6bc](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/commit/39fb6bc))
+
+
+
 <a name="0.9.20"></a>
 ## [0.9.20](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/compare/v0.9.19...v0.9.20) (2017-07-03)
 
