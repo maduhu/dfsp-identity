@@ -22,7 +22,8 @@ module.exports = {
     })
       .or('username', 'actionId', 'sessionId')
       .with('password', 'username')
-      .with('sessionId', 'timezone', 'actorId', 'channel', 'iat'),
+      .with('sessionId', 'timezone', 'actorId', 'channel', 'iat')
+      .unknown(),
     result: joi.object({
       'identity.check': joi.object(),
       'permission.get': joi.array(),
@@ -32,7 +33,7 @@ module.exports = {
       roles: joi.array(),
       emails: joi.array(),
       screenHeader: joi.string().allow('')
-    })
+    }).unknown()
   },
   get: {
     auth: false,
