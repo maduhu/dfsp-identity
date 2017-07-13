@@ -1,3 +1,13 @@
+<a name="0.10.1"></a>
+## [0.10.1](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/compare/v0.10.0...v0.10.1) (2017-07-13)
+
+
+### Bug Fixes
+
+* allow unknown properties of the identity.check request/response objects ([33e1213](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/commit/33e1213))
+
+
+
 <a name="0.10.0"></a>
 # [0.10.0](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-identity/compare/v0.9.20...v0.10.0) (2017-07-10)
 
