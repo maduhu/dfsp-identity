@@ -134,6 +134,19 @@ test({
         }
       },
       {
+        name: 'Test check - negative missing pass',
+        method: 'identity.check',
+        params: (context) => {
+          return {
+            username: IDENTIFIER_1,
+            actionId: '11'
+          }
+        },
+        error: (error, assert) => {
+          assert.equals(error.errorPrint, 'policy.param.password', 'Check missing password')
+        }
+      },
+      {
         name: 'Identity check - permissions get',
         method: 'identity.check',
         params: (context) => {
